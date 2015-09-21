@@ -126,6 +126,6 @@ export var scopeKey = typeof Symbol === 'function' ? Symbol('scopeSettings') : r
 /**
  * Assertion utility.
  */
-export function assert(ok: boolean, ...args: string[]): void {
+export function assert(ok: boolean|number, ...args: string[]): void {
   if (!ok) throw new Error(args.join(' '));
 }

@@ -1,5 +1,5 @@
-/// <reference path="../typings/ng-decorate/ng-decorate.d.ts" />
+/// <reference path="./typings/ng-right/ng-right.d.ts" />
 
-import lib = ngDecorate;
+import lib = ngRight;
 
 declare var Symbol: Function;
