@@ -2,7 +2,6 @@
  * @author john
  * @version 9/21/15 12:46 AM
  */
-/// <reference path="./refs.ts"/> ///ts:ref:generated
 var utils = require('./utils');
 function state(options) {
     return function (target) {
