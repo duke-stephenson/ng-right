@@ -1,3 +1,20 @@
+<a name="0.0.2"></a>
+## [0.0.2](https://github.com/j-walker23/ng-right/compare/0.0.1...v0.0.2) (2015-09-21)
+
+
+### Bug Fixes
+
+* **release:** publish npm ([127f5f5](https://github.com/j-walker23/ng-right/commit/127f5f5))
+
+### Features
+
+* **ignore:** fucking baseDir files ([432994f](https://github.com/j-walker23/ng-right/commit/432994f))
+* **lib:** export it right maybe? ([9927e9d](https://github.com/j-walker23/ng-right/commit/9927e9d))
+* **lib:** export it right maybe? ([fb0f68b](https://github.com/j-walker23/ng-right/commit/fb0f68b))
+* **release:** build release 0.0.2 ([bcef6f3](https://github.com/j-walker23/ng-right/commit/bcef6f3))
+
+
+
 <a name="0.0.1"></a>
 ## 0.0.1 (2015-09-21)
 

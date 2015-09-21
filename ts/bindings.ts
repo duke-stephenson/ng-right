@@ -9,6 +9,7 @@
 /// <reference path="./refs.ts"/> ///ts:ref:generated
 
 import * as utils from './utils';
+import lib from './lib';
 
 /**
  * Property binding decorator. Takes a string property descriptor, like '@' or

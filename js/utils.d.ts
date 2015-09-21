@@ -1,3 +1,4 @@
+import lib from './lib';
 export declare const options: {
     module: ng.IModule;
     makeTemplateUrl(elementName: string): string;
