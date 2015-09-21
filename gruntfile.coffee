@@ -49,6 +49,7 @@ module.exports = (grunt) ->
         fast: 'never'
       dev:
         options:
+          noExternalResolve: true
           declaration: true
           target: 'es5'
           compile: true
@@ -67,3 +68,5 @@ module.exports = (grunt) ->
         reference: '<%= types.ref %>'
 
   grunt.initConfig grunt.util._.extend tasks, paths
+
+  grunt.registerTask 'default', ['clean', 'ts', 'dst_bundle']
