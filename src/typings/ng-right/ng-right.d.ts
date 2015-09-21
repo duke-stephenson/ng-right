@@ -11,7 +11,6 @@ declare module 'ng-right' {
     export var bindOneWay: typeof ngRight.bindOneWay;
     export var bindString: typeof ngRight.bindString;
     export var bindExpression: typeof ngRight.bindExpression;
-    export var defaults: typeof ngRight.defaults;
 }
 
 declare module ngRight {
@@ -42,34 +41,16 @@ declare module ngRight {
     export function bindExpression(key: string): PropertyDecorator;
     export function bindExpression(target: any, key: string): void;
 
-    // Mutable configuration.
-    export const defaults: {
-        module?: ng.IModule;
-        moduleName?: string;
-        controllerAs: string;
-        makeTemplateUrl: (selector: string) => string;
-    };
+    interface OptionsConfig {
+        module: ng.IModule;
+        makeTemplateUrl?: (selector: string) => string;
+        ng?: angular.IAngularBootstrapConfig;
+    }
 
     // Abstract interface shared by configuration objects.
     interface BaseConfig {
-        // Angular module object. If provided, other module options are ignored, and
-        // no new module is declared.
-        module?: ng.IModule;
 
-        // Optional name for the new module created for this service or directive.
-        // If omitted, the service or directive name is used.
-        moduleName?: string;
 
-        // Names of other angular modules this module depends on.
-        dependencies?: string[];
-
-        // DEPRECATED in favour of @autoinject.
-        // Angular services that will be assigned to the class prototype.
-        inject?: string[];
-
-        // DEPRECATED in favour of @autoinject.
-        // Angular services that will be assigned to the class as static properties.
-        injectStatic?: string[];
     }
 
     interface DirectiveConfig extends BaseConfig, ng.IDirective {
@@ -101,6 +82,17 @@ declare module ngRight {
         templateUrl?: string|Function;
         link?: Function;
         compile?: any;
+    }
+
+    interface StateConfig extends angular.ui.IState {
+        defaultRoute?: boolean|string;
+        html5Mode?: boolean;
+    }
+
+    interface StateClass extends ControllerClass{
+        selector?: string;
+        resolve?: {};
+        bootstrap?: any;
     }
 
     interface BindTwoWayOptions {
