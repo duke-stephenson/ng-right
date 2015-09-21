@@ -21,3 +21,5 @@ grunt conventionalChangelog
 git commit --all -m "chore(release): bump and changelog"
 
 git hf release finish -M
+
+npm publish
