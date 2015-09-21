@@ -8,16 +8,25 @@ module.exports = (grunt) ->
 
   paths =
     types:
-      dev: 'src/**/*.ts'
-      ref: 'src/refs.d.ts'
+      dev: 'ts/**/*.ts'
+      ref: 'ts/refs.ts'
 
   tasks =
     ts:
+      options:
+        emitDecoratorMetadata: true
+        failOnTypeErrors: true
       dev:
         options:
+          declaration: true
+          target: 'es5'
+          compile: true
+          noEmit: true
+          compiler: './node_modules/typescript/lib/tsc'
           fast: 'never'
-        tsconfig: 'tsconfig.json'
-        watch: '.'
+
+        watch: 'ts'
+        src: '<%= types.dev %>'
         reference: '<%= types.ref %>'
 
   grunt.initConfig grunt.util._.extend tasks, paths
