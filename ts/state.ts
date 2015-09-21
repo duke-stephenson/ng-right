@@ -5,8 +5,12 @@
 
 
 ///ts:ref=refs
+/// <reference path="./refs.ts"/> ///ts:ref:generated
+
 
 import * as utils from './utils';
+
+import ui = angular.ui;
 
 function state(options: lib.StateConfig) {
 
@@ -30,11 +34,11 @@ function state(options: lib.StateConfig) {
 
         // Create an injectable value service to share the resolved values with the controller
         // The service bears the same name as the component's camelCased selector name.
-        //if (doResolve) {
+        // if (doResolve) {
         //    if (!serviceExists(resolvedServiceName)) {
         //        angular.module(currentModule).value(resolvedServiceName, {});
         //    }
-        //}
+        // }
 
         // Configure the state
 
@@ -54,15 +58,21 @@ function state(options: lib.StateConfig) {
 
                 // The user can supply a controller through a parameter in options
                 // or the class itself can be used as the controller if no component is annotated.
-                var userController = options.controller || (!target.selector ? target : undefined);
+                let userController: any;
+                if (options.controller) {
+                    userController = <string>options.controller;
 
-                // Also, de-namespace the resolve injectables for ui-router to inject correctly
-                if (userController && userController.$inject && userController.$inject.length && deps && deps.length) {
-                    deps.forEach(function(dep) {
-                        var i = userController.$inject.indexOf(dep);
-                        if (i !== -1)
-                            userController.$inject[i] = dep;
-                    });
+                } else if (!target.selector) {
+                    if (target.$inject && target.$inject.length && deps && deps.length) {
+
+                        userController = <lib.StateClass>target;
+                        deps.forEach(function(dep) {
+                            var i = userController.$inject.indexOf(dep);
+                            if (i !== -1)
+                                userController.$inject[i] = dep;
+                        });
+
+                    }
                 }
 
 
@@ -86,7 +96,7 @@ function state(options: lib.StateConfig) {
                     // 3) Otherwise, if this is a component, but not the bootstrap(**) component,
                     //    then we use it's selector to create the inline template "<selector></selector>".
                     // 4) Otherwise, we provide the following default template "<div ui-view></div>".
-                    //(**) The bootstrap component will be rendered by Angular directly and must not
+                    // (**) The bootstrap component will be rendered by Angular directly and must not
                     //     be rendered again by ui-router, or you will literally see it twice.
                     // todo: allow the user to specify their own div/span instead of forcing "div(ui-view)"
                     template: options.templateUrl ? undefined : options.template || ((target.template || target.templateUrl) && !target.bootstrap && target.selector ? target.selector.replace(/^(.*)$/, '<$1></$1>') : '<div ui-view=""></div>'),
@@ -137,7 +147,7 @@ function state(options: lib.StateConfig) {
 
         return target;
 
-    }
+    };
 }
 
 

@@ -45,7 +45,7 @@ function service(config: lib.ServiceConfig|lib.ControllerConfig, type?: string) 
             if (conf.serviceName) module.factory(conf.serviceName, () => constructor);
         }
         if (type === 'service') module.factory(config.serviceName, () => constructor);
-    }
+    };
 }
 
 /**

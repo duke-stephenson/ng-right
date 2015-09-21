@@ -89,7 +89,7 @@ declare module ngRight {
         html5Mode?: boolean;
     }
 
-    interface StateClass extends ControllerClass{
+    interface StateClass extends ControllerClass {
         selector?: string;
         resolve?: {};
         bootstrap?: any;

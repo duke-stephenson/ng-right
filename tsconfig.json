@@ -1,20 +1,47 @@
 {
-  "version": "1.6.2",
-  "compilerOptions": {
-    "declaration": true,
-    "noImplicitAny": false,
-    "compile": false,
-    "noEmit": false,
-    "failOnTypeErrors": true,
-    "experimentalDecorators": true,
-    "target": "es5",
-    "outDir": ".tmp",
-    "rootDir": ".",
-    "sourceMap": false
-  },
-  "exclude": [
-    "node_modules",
-    "lib",
-    "src/.baseDir.ts"
-  ]
+    "version": "1.6.2",
+    "compilerOptions": {
+        "declaration": true,
+        "noImplicitAny": false,
+        "compile": false,
+        "noEmit": false,
+        "failOnTypeErrors": true,
+        "experimentalDecorators": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es5",
+        "rootDir": ".",
+        "outDir": "js",
+        "fast": "never",
+        "sourceMap": false
+    },
+    "exclude": [
+        "node_modules",
+        "js",
+        "js/.baseDir.ts",
+        ".baseDir.ts",
+        "ts/.baseDir.ts"
+    ],
+    "filesGlob": [
+        "ts/**/*.ts",
+        "!ts/.baseDir.ts",
+        "!node_modules/**/*.ts"
+    ],
+    "files": [
+        "ts/bindings.ts",
+        "ts/bootstrap.ts",
+        "ts/directives.ts",
+        "ts/index.ts",
+        "ts/inject.ts",
+        "ts/lib.d.ts",
+        "ts/refs.ts",
+        "ts/services.ts",
+        "ts/state.ts",
+        "ts/typings/angular-ui-router/angular-ui-router.d.ts",
+        "ts/typings/angularjs/angular.d.ts",
+        "ts/typings/jquery/jquery.d.ts",
+        "ts/typings/lodash/lodash.d.ts",
+        "ts/typings/ng-right/ng-right.d.ts",
+        "ts/utils.ts"
+    ]
 }

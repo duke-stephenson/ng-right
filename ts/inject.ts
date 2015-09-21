@@ -4,7 +4,7 @@
  */
 
 ///ts:ref=refs
-/// <reference path="./refs.d.ts"/> ///ts:ref:generated
+/// <reference path="./refs.ts"/> ///ts:ref:generated
 
 
 import * as utils from './utils';
