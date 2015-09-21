@@ -5,7 +5,7 @@ set -e
 type_arg=$1
 type=${type_arg:-"patch"}
 
-version=$(grunt bump-only:${type} --dry-run 2>&1 | grep "(in bower" | cut -d " " -f 6)
+version=$(grunt bump-only:${type} --dry-run 2>&1 | grep "(in package" | cut -d " " -f 6)
 
 git hf release start ${version}
 
