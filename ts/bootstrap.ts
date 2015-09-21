@@ -29,7 +29,7 @@ function bootstrap(options: lib.OptionsConfig) {
             angular.bootstrap(el, [options.module.name], options.ng);
         }
 
-    }
+    };
 }
 
 

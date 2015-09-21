@@ -130,7 +130,7 @@ function state(options: lib.StateConfig) {
                 function controller() {
                     var args = Array.prototype.slice.call(arguments);
 
-                    // This is the service that we "unshifted" earlier
+                    // This is the service that we "un-shifted" earlier
                     var localScope = args[0];
 
                     args = args.slice(1);
@@ -164,7 +164,7 @@ function state(options: lib.StateConfig) {
  *                      string = .otherwise(defaultRoute)
  *      resolve:        Literal object, see ui-router resolve
  *      abstract:       true/false
- *      params:         Literal object, see ui-router doco
+ *      params:         Literal object
  *      controller:     A controller is automatically assigned, but if you need
  *                      finer control then you can assign your own controller
  *

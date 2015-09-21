@@ -13,6 +13,3 @@
 /// <reference path="typings/lodash/lodash.d.ts" />
 /// <reference path="utils.ts" />
 // grunt-end
-
-//grunt-start
-//grunt-end
