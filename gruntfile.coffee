@@ -69,4 +69,4 @@ module.exports = (grunt) ->
 
   grunt.initConfig grunt.util._.extend tasks, paths
 
-  grunt.registerTask 'default', ['clean', 'ts', 'dst_bundle']
+  grunt.registerTask 'default', ['clean', 'ts', 'dts_bundle']
