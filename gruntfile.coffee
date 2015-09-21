@@ -5,6 +5,7 @@
 module.exports = (grunt) ->
 
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
+  grunt.loadNpmTasks 'dts-generator'
 
   paths =
     types:
@@ -41,6 +42,14 @@ module.exports = (grunt) ->
         options:
           name: 'ng-right'
           main: 'js/index.d.ts'
+
+    dtsGenerator:
+      options:
+        name: 'package-name'
+        baseDir: 'ts'
+        out: 'package-name.d.ts'
+      build:
+        src: [ 'ts/**/*.ts' ]
 
     ts:
       options:

@@ -2,7 +2,7 @@
 ## Files
 *.js.map
 *.iml
-*.baseDir.ts
+*.baseDir.*
 
 ## Folders
 .idea/
