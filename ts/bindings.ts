@@ -1,4 +1,12 @@
+/**
+ * @version 9/20/15 7:24 PM
+ */
+
 'use strict';
+
+
+///ts:ref=refs
+/// <reference path="./refs.ts"/> ///ts:ref:generated
 
 import * as utils from './utils';
 
@@ -24,7 +32,7 @@ import * as utils from './utils';
  * When used with @Component or @Attribute, the scope property is then passed
  * into the directive definition.
  *
- * Keeping this unexported for the time being. I'm not convinced we need this
+ * Keeping this un-exported for the time being. I'm not convinced we need this
  * general form over other, more descriptive decorators.
  */
 function bind(descriptor: string = '=') {
@@ -170,6 +178,7 @@ function bindOneWayBase(key: string = '') {
         var secretKey                    = utils.randomString();
         Class[utils.scopeKey][secretKey] = '&' + (key || propertyName);
 
+        // noinspection JSUnusedLocalSymbols
         Object.defineProperty(target, propertyName, {
             get: function() {
                 if (typeof this[secretKey] === 'function') return this[secretKey]();

@@ -8,25 +8,62 @@ module.exports = (grunt) ->
 
   paths =
     types:
-      dev: 'ts/**/*.ts'
+      dev: ['ts/**/*.ts', '!ts/.baseDir.ts']
       ref: 'ts/refs.ts'
 
   tasks =
+
+    clean: 'js'
+
+    conventionalChangelog:
+      options:
+        changelogOpts:
+          preset: 'angular'
+        context: {}
+        gitRawCommitsOpts: {}
+        parserOpts: {}
+        writerOpts: {}
+      release:
+        src: 'changelog.md'
+
+    bump:
+      options:
+        files: ['package.json']
+        commit: true
+        commitFiles: ['package.json']
+        gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d'
+        createTag: false
+        push: false
+        commitMessage: '%VERSION% bump'
+
+    dts_bundle:
+      build:
+        options:
+          name: 'ng-right'
+          main: 'js/index.d.ts'
+
     ts:
       options:
         emitDecoratorMetadata: true
         failOnTypeErrors: true
+        fast: 'never'
       dev:
         options:
           declaration: true
           target: 'es5'
           compile: true
-          noEmit: true
+          module: 'commonjs'
+#          noEmit: true
           compiler: './node_modules/typescript/lib/tsc'
           fast: 'never'
+          sourceMap: false
 
-        watch: 'ts'
-        src: '<%= types.dev %>'
+        files: [
+          src: '<%= types.dev %>'
+          dest: 'js'
+        ]
+#        outDir: 'js'
+#        watch: 'ts'
         reference: '<%= types.ref %>'
 
   grunt.initConfig grunt.util._.extend tasks, paths
