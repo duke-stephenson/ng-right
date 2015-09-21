@@ -28,25 +28,25 @@ import * as utils from './utils';
  * general form over other, more descriptive decorators.
  */
 function bind(descriptor: string = '=') {
-  return function(target: any, propertyName: string): void {
-    var Class = target.constructor;
-    if (!Class[utils.scopeKey]) Class[utils.scopeKey] = {};
-    Class[utils.scopeKey][propertyName] = descriptor;
-  };
+    return function(target: any, propertyName: string): void {
+        var Class = target.constructor;
+        if (!Class[utils.scopeKey]) Class[utils.scopeKey] = {};
+        Class[utils.scopeKey][propertyName] = descriptor;
+    };
 }
 
 /**
  * Polymorphic version of @bindString, usable without parens. Example:
  *   class VM {
  *     @bindString first: string;
- *     @bindString('secunda') second: string;
+ *     @bindString('second') second: string;
  *   }
  */
 export function bindString(targetOrKey: any|string, keyOrNothing?: string) {
-  if (targetOrKey != null && typeof targetOrKey === 'object' && typeof keyOrNothing === 'string') {
-    return bindStringBase().apply(null, arguments);
-  }
-  return bindStringBase.apply(null, arguments);
+    if (targetOrKey != null && typeof targetOrKey === 'object' && typeof keyOrNothing === 'string') {
+        return bindStringBase().apply(null, arguments);
+    }
+    return bindStringBase.apply(null, arguments);
 }
 
 /**
@@ -59,11 +59,11 @@ export function bindString(targetOrKey: any|string, keyOrNothing?: string) {
  *   }
  */
 function bindStringBase(key: string = '') {
-  return function(target: any, propertyName: string): void {
-    var Class = target.constructor;
-    if (!Class[utils.scopeKey]) Class[utils.scopeKey] = {};
-    Class[utils.scopeKey][propertyName] = '@' + key;
-  };
+    return function(target: any, propertyName: string): void {
+        var Class = target.constructor;
+        if (!Class[utils.scopeKey]) Class[utils.scopeKey] = {};
+        Class[utils.scopeKey][propertyName] = '@' + key;
+    };
 }
 
 /**
@@ -75,10 +75,10 @@ function bindStringBase(key: string = '') {
  *   }
  */
 export function bindTwoWay(targetOrOptions: any|lib.BindTwoWayOptions, keyOrNothing?: string) {
-  if (targetOrOptions != null && typeof targetOrOptions === 'object' && typeof keyOrNothing === 'string') {
-    bindTwoWayBase()(targetOrOptions, keyOrNothing);
-  }
-  return bindTwoWayBase(targetOrOptions);
+    if (targetOrOptions != null && typeof targetOrOptions === 'object' && typeof keyOrNothing === 'string') {
+        bindTwoWayBase()(targetOrOptions, keyOrNothing);
+    }
+    return bindTwoWayBase(targetOrOptions);
 }
 
 /**
@@ -92,11 +92,11 @@ export function bindTwoWay(targetOrOptions: any|lib.BindTwoWayOptions, keyOrNoth
  *   }
  */
 function bindTwoWayBase(options: lib.BindTwoWayOptions = {}) {
-  return function(target: any, propertyName: string): void {
-    var Class = target.constructor;
-    if (!Class[utils.scopeKey]) Class[utils.scopeKey] = {};
-    Class[utils.scopeKey][propertyName] = '=' + encodeDescriptor(options);
-  };
+    return function(target: any, propertyName: string): void {
+        var Class = target.constructor;
+        if (!Class[utils.scopeKey]) Class[utils.scopeKey] = {};
+        Class[utils.scopeKey][propertyName] = '=' + encodeDescriptor(options);
+    };
 }
 
 /**
@@ -107,10 +107,10 @@ function bindTwoWayBase(options: lib.BindTwoWayOptions = {}) {
  *   }
  */
 export function bindExpression(targetOrKey: any|string, keyOrNothing?: string) {
-  if (targetOrKey != null && typeof targetOrKey === 'object' && typeof keyOrNothing === 'string') {
-    bindExpressionBase()(targetOrKey, keyOrNothing);
-  }
-  return bindExpressionBase(targetOrKey);
+    if (targetOrKey != null && typeof targetOrKey === 'object' && typeof keyOrNothing === 'string') {
+        bindExpressionBase()(targetOrKey, keyOrNothing);
+    }
+    return bindExpressionBase(targetOrKey);
 }
 
 /**
@@ -123,11 +123,11 @@ export function bindExpression(targetOrKey: any|string, keyOrNothing?: string) {
  *   }
  */
 function bindExpressionBase(key: string = '') {
-  return function(target: any, propertyName: string): void {
-    var Class = target.constructor;
-    if (!Class[utils.scopeKey]) Class[utils.scopeKey] = {};
-    Class[utils.scopeKey][propertyName] = '&' + key;
-  };
+    return function(target: any, propertyName: string): void {
+        var Class = target.constructor;
+        if (!Class[utils.scopeKey]) Class[utils.scopeKey] = {};
+        Class[utils.scopeKey][propertyName] = '&' + key;
+    };
 }
 
 /**
@@ -138,10 +138,10 @@ function bindExpressionBase(key: string = '') {
  *   }
  */
 export function bindOneWay(targetOrKey: any|string, keyOrNothing?: string) {
-  if (targetOrKey != null && typeof targetOrKey === 'object' && typeof keyOrNothing === 'string') {
-    bindOneWayBase()(targetOrKey, keyOrNothing);
-  }
-  return bindOneWayBase(targetOrKey);
+    if (targetOrKey != null && typeof targetOrKey === 'object' && typeof keyOrNothing === 'string') {
+        bindOneWayBase()(targetOrKey, keyOrNothing);
+    }
+    return bindOneWayBase(targetOrKey);
 }
 
 /**
@@ -163,26 +163,26 @@ export function bindOneWay(targetOrKey: any|string, keyOrNothing?: string) {
  *   }
  */
 function bindOneWayBase(key: string = '') {
-  return function(target: any, propertyName: string): void {
-    var Class = target.constructor;
-    if (!Class[utils.scopeKey]) Class[utils.scopeKey] = {};
+    return function(target: any, propertyName: string): void {
+        var Class = target.constructor;
+        if (!Class[utils.scopeKey]) Class[utils.scopeKey] = {};
 
-    var secretKey = utils.randomString();
-    Class[utils.scopeKey][secretKey] = '&' + (key || propertyName);
+        var secretKey                    = utils.randomString();
+        Class[utils.scopeKey][secretKey] = '&' + (key || propertyName);
 
-    Object.defineProperty(target, propertyName, {
-      get: function() {
-        if (typeof this[secretKey] === 'function') return this[secretKey]();
-        return undefined;
-      },
-      set: function(_) {}
-    });
-  };
+        Object.defineProperty(target, propertyName, {
+            get: function() {
+                if (typeof this[secretKey] === 'function') return this[secretKey]();
+                return undefined;
+            },
+            set: function(_) {}
+        });
+    };
 }
 
 /**
  * Generates a descriptor string suffix from the given options.
  */
 function encodeDescriptor(options): string {
-  return (options.collection ? '*' : '') + (options.optional ? '?' : '') + (options.key || '');
+    return (options.collection ? '*' : '') + (options.optional ? '?' : '') + (options.key || '');
 }

@@ -6976,7 +6976,7 @@ declare module _ {
 
     interface LoDashObjectWrapper<T> {
         /**
-        * @see _.defaults
+        * @see _.options
         **/
         defaults<T, TResult>(...sources: any[]): LoDashObjectWrapper<TResult>
     }
