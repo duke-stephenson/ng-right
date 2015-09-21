@@ -58,7 +58,7 @@ function directive(config: lib.DirectiveConfig) {
 
         // Register the directive.
         module.directive(directiveName, definition);
-    }
+    };
 }
 
 /**

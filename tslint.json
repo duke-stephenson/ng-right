@@ -12,10 +12,6 @@
         ],
         "no-unreachable": true,
         "no-use-before-declare": true,
-        "no-var-keyword": true,
-        "quotemark": [true,
-            "double"
-        ],
         "semicolon": true,
         "whitespace": [true,
             "check-branch",
