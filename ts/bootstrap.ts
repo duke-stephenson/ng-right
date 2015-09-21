@@ -4,6 +4,7 @@
  */
 
 import {setOptions} from './utils';
+import lib from './lib';
 
 
 function bootstrap(options: lib.OptionsConfig) {

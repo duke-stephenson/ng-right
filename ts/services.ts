@@ -1,6 +1,8 @@
 'use strict';
 
 import * as utils from './utils';
+import lib from './lib';
+
 
 function service(config: lib.ServiceConfig|lib.ControllerConfig, type?: string) {
 

@@ -7,10 +7,9 @@
 ///ts:ref=refs
 /// <reference path="./refs.ts"/> ///ts:ref:generated
 
-
+import lib from './lib';
 import * as utils from './utils';
 
-import ui = angular.ui;
 
 function state(options: lib.StateConfig) {
 
