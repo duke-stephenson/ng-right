@@ -1,5 +1,9 @@
 'use strict';
 
+import lib from './lib';
+
+declare var Symbol: Function;
+
 /**
  * Mutable configuration object.
  */
