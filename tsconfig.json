@@ -1,0 +1,21 @@
+{
+  "version": "1.6.2",
+  "compilerOptions": {
+    "declaration": true,
+    "noImplicitAny": true,
+    "compile": false,
+    "noEmit": false,
+    "failOnTypeErrors": true,
+    "experimentalDecorators": true,
+    "target": "es6",
+    "outDir": ".tmp",
+    "rootDir": ".",
+    "sourceMap": false
+
+  },
+  "exclude": [
+    "node_modules",
+    "lib",
+    "src/.baseDir.ts"
+  ]
+}
