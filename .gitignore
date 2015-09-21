@@ -1,0 +1,11 @@
+
+## Files
+*.js.map
+*.iml
+*.baseDir.ts
+
+## Folders
+.idea/
+.tscache/
+
+node_modules/
