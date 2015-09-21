@@ -1,6 +1,7 @@
 'use strict';
 
 import * as utils from './utils';
+import lib from './lib';
 
 /**
  * Shared directive definition logic.
