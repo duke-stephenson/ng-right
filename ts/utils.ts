@@ -1,4 +1,3 @@
-import OptionsConfig = ngRight.OptionsConfig;
 'use strict';
 
 /**
@@ -31,8 +30,20 @@ export function setOptions(opts: lib.OptionsConfig) {
 }
 
 /**
+ * Used to store autoinject settings (list of things to inject onto the class
+ * or the prototype).
+ */
+export var autoinjectKey = typeof Symbol === 'function' ? Symbol('autoinjectSettings') : randomString();
+
+/**
+ * Used to store binding information (isolated scope settings).
+ */
+export var scopeKey = typeof Symbol === 'function' ? Symbol('scopeSettings') : randomString();
+
+
+/**
  * Normalises a string, converting non-English-letters into singular spaces,
- * inserting spaces into case boundaries, and lowercasing.
+ * inserting spaces into case boundaries, and lower casing.
  */
 function normalise(name: string): string {
     name = name.replace(/[^A-Za-z]+/g, ' ');
@@ -81,7 +92,9 @@ export function zipObject<T>(one: string[], other: T[]): {[key: string]: T} {
  * Doesn't preserve arity ('.length') and argument names.
  */
 export function cloneFunction(func: Function) {
-    return function(...args) {return func.call(this, ...args)};
+    return function(...args) {
+        return func.call(this, ...args);
+    };
 }
 
 /**
@@ -101,17 +114,6 @@ export function autoinject(target: any, propertyName: string): void {
     if (!target.hasOwnProperty(autoinjectKey)) target[autoinjectKey] = [];
     target[autoinjectKey].push(propertyName);
 }
-
-/**
- * Used to store autoinject settings (list of things to inject onto the class
- * or the prototype).
- */
-export var autoinjectKey = typeof Symbol === 'function' ? Symbol('autoinjectSettings') : randomString();
-
-/**
- * Used to store binding information (isolated scope settings).
- */
-export var scopeKey = typeof Symbol === 'function' ? Symbol('scopeSettings') : randomString();
 
 /**
  * Assertion utility.
