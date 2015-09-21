@@ -21,7 +21,7 @@ function inject(config: lib.InjectConfig) {
         target.$inject.unshift.apply(target.$inject, deps);
 
         return target;
-    }
+    };
 }
 
 export function Inject(config: lib.InjectConfig) {
