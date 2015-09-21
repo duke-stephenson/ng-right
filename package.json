@@ -1,0 +1,42 @@
+{
+  "name": "ts-ng-now",
+  "version": "0.0.0",
+  "description": "Angular 2 component syntax for Angular 1 apps",
+  "author": "John Walker",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/j-walker23/angular2-now.git"
+  },
+  "main": "dist/ts-ng-now",
+  "keywords": [
+    "angular",
+    "angular1",
+    "angular2",
+    "annotations",
+    "decorators",
+    "babel"
+  ],
+  "devDependencies": {
+    "browserify": "^11.0.0",
+    "del": "^1.1.1",
+    "grunt": "^0.4.5",
+    "grunt-ts": "^5.0.0-beta.5",
+    "gulp": "gulpjs/gulp#4.0",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-typescript": "^2.8.0",
+    "gulp-watch": "^4.2.4",
+    "load-grunt-tasks": "^3.2.0",
+    "lodash": "^3.10.1",
+    "matchdep": "^0.3.0",
+    "typescript": "^1.6.2",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "jspm": {
+    "directories": {
+      "lib": "lib"
+    },
+    "main": "index",
+    "format": "cjs"
+  }
+}
