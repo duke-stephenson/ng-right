@@ -29,4 +29,4 @@ node_modules
 bower_components
 jspm_packages
 typings/*
-!typings/ng-decorate
+!typings/ng-right

@@ -30,10 +30,10 @@ gulp.task('compile', function() {
 });
 
 gulp.task('bundle', function() {
-  return browserify({standalone: 'ng-decorate'})
+  return browserify({standalone: 'ng-right'})
     .add('lib/index')
     .bundle()
-    .pipe(source('ng-decorate.js'))
+    .pipe(source('ng-right.js'))
     .pipe(gulp.dest('dist'));
 });
 
