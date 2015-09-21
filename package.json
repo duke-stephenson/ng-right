@@ -29,6 +29,7 @@
     "load-grunt-tasks": "^3.2.0",
     "lodash": "^3.10.1",
     "matchdep": "^0.3.0",
+    "tslint": "^2.5.0",
     "typescript": "^1.6.2",
     "vinyl-source-stream": "^1.1.0"
   },

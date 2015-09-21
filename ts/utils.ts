@@ -4,7 +4,7 @@ import OptionsConfig = ngRight.OptionsConfig;
 /**
  * Mutable configuration object.
  */
-const options = {
+export const options = {
     // Default angular module. Supersedes module declarations.
     module: <ng.IModule> null,
     // Generates a template url from an element name. Another common variant:
