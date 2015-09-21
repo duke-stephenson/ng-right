@@ -11,6 +11,7 @@ declare module 'ng-right' {
 }
 
 declare module '__ng-right/bindings' {
+    import lib from '__ng-right/lib';
     export function bindString(targetOrKey: any | string, keyOrNothing?: string): any;
     export function bindTwoWay(targetOrOptions: any | lib.BindTwoWayOptions, keyOrNothing?: string): (target: any, propertyName: string) => void;
     export function bindExpression(targetOrKey: any | string, keyOrNothing?: string): (target: any, propertyName: string) => void;
@@ -18,29 +19,35 @@ declare module '__ng-right/bindings' {
 }
 
 declare module '__ng-right/directives' {
+    import lib from '__ng-right/lib';
     export function Component(config: lib.DirectiveConfig): (constructor: lib.ControllerClass) => void;
     export function Attribute(config: lib.DirectiveConfig): (constructor: lib.ControllerClass) => void;
 }
 
 declare module '__ng-right/services' {
+    import lib from '__ng-right/lib';
     export function Service(config: lib.ServiceConfig): (constructor: Function) => void;
     export function Ambient(configOrClass: any): any;
     export function Controller(config: lib.ControllerConfig): (constructor: Function) => void;
 }
 
 declare module '__ng-right/inject' {
+    import lib from '__ng-right/lib';
     export function Inject(config: lib.InjectConfig): (target: lib.ControllerClass) => lib.ControllerClass;
 }
 
 declare module '__ng-right/state' {
+    import lib from '__ng-right/lib';
     export function State(options: angular.ui.IState): (target: lib.StateClass) => lib.StateClass;
 }
 
 declare module '__ng-right/bootstrap' {
+    import lib from '__ng-right/lib';
     export function Bootstrap(options: lib.OptionsConfig): (target: lib.StateClass) => void;
 }
 
 declare module '__ng-right/utils' {
+    import lib from '__ng-right/lib';
     export const options: {
         module: ng.IModule;
         makeTemplateUrl(elementName: string): string;
@@ -59,5 +66,51 @@ declare module '__ng-right/utils' {
     export function randomString(): string;
     export function autoinject(target: any, propertyName: string): void;
     export function assert(ok: boolean | number, ...args: string[]): void;
+}
+
+declare module '__ng-right/lib' {
+    export default lib;
+    namespace lib {
+        interface OptionsConfig {
+            module: ng.IModule;
+            makeTemplateUrl?: (selector: string) => string;
+            ng?: angular.IAngularBootstrapConfig;
+        }
+        interface BaseConfig {
+        }
+        interface DirectiveConfig extends BaseConfig, ng.IDirective {
+            selector: string;
+        }
+        interface ServiceConfig extends BaseConfig {
+            serviceName: string;
+        }
+        interface ControllerConfig extends BaseConfig {
+            controllerName: string;
+            serviceName?: string;
+        }
+        interface InjectConfig {
+            deps: string[];
+        }
+        interface ControllerClass extends Function {
+            template?: string | Function;
+            templateUrl?: string | Function;
+            link?: Function;
+            compile?: any;
+        }
+        interface StateConfig extends angular.ui.IState {
+            defaultRoute?: boolean | string;
+            html5Mode?: boolean;
+        }
+        interface StateClass extends ControllerClass {
+            selector?: string;
+            resolve?: {};
+            bootstrap?: any;
+        }
+        interface BindTwoWayOptions {
+            collection?: boolean;
+            optional?: boolean;
+            key?: string;
+        }
+    }
 }
 
