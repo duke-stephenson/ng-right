@@ -8,6 +8,7 @@
 
 
 import * as utils from './utils';
+import lib from './lib';
 
 
 function inject(config: lib.InjectConfig) {
