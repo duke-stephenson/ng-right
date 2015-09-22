@@ -3,11 +3,11 @@
 *.js.map
 *.iml
 *.baseDir.*
+typings/**/*.ts
+!typings/ng-right/ng-right.d.ts
 
 ## Folders
 .idea/
 .tscache/
-
 node_modules/
-typings/**/*.ts
-!typings/ng-right/ng-right.d.ts
+lib/

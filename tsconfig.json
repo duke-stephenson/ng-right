@@ -7,14 +7,14 @@
     "module": "commonjs",
     "target": "es5",
     "rootDir": ".",
-    "outDir": "js",
+    "outDir": "lib",
     "fast": "never",
     "sourceMap": false,
     "noExternalResolve": true
   },
   "exclude": [
     "node_modules",
-    "js",
+    "lib",
     "ng-right-tests.ts"
   ],
   "filesGlob": [
