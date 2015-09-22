@@ -9,4 +9,5 @@
 .tscache/
 
 node_modules/
-typings/
+typings/**/*.ts
+!typings/ng-right/ng-right.d.ts
