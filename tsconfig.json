@@ -5,7 +5,6 @@
     "failOnTypeErrors": true,
     "experimentalDecorators": true,
     "module": "commonjs",
-    "moduleResolution": "node",
     "target": "es5",
     "rootDir": ".",
     "outDir": "js",
@@ -15,6 +14,27 @@
   },
   "exclude": [
     "node_modules",
-    "js"
+    "js",
+    "ng-right-tests.ts"
+  ],
+  "filesGlob": [
+    "./ts/**/*.ts",
+    "./typings/**/*.ts",
+    "!**/*baseDir*"
+  ],
+  "files": [
+    "ts/bindings.ts",
+    "ts/bootstrap.ts",
+    "ts/directives.ts",
+    "ts/index.ts",
+    "ts/inject.ts",
+    "ts/refs.ts",
+    "ts/services.ts",
+    "ts/state.ts",
+    "ts/utils.ts",
+    "typings/angular-ui-router/angular-ui-router.d.ts",
+    "typings/angularjs/angular.d.ts",
+    "typings/jquery/jquery.d.ts",
+    "typings/ng-right/ng-right.d.ts"
   ]
 }

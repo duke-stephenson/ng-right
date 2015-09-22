@@ -5,7 +5,6 @@
 module.exports = (grunt) ->
 
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
-  grunt.loadNpmTasks 'dts-generator'
 
   paths =
     types:
@@ -14,7 +13,9 @@ module.exports = (grunt) ->
 
   tasks =
 
-    clean: 'js'
+    clean:
+      dev: 'js'
+      dist: 'ts/.baseDir.*'
 
     conventionalChangelog:
       options:
@@ -47,11 +48,18 @@ module.exports = (grunt) ->
 
     ts:
       dev:
-        options:
-          tsconfig: 'tsconfig.json'
-#        watch: 'ts'
         reference: '<%= types.ref %>'
+        tsconfig: 'tsconfig.json'
+        options:
+          watch: 'ts'
+      build:
+        reference: '<%= types.ref %>'
+        tsconfig: 'tsconfig.json'
+      dist:
+        tsconfig: 'tsconfig.json'
+        out: 'dist/ng-right'
+
 
   grunt.initConfig grunt.util._.extend tasks, paths
 
-  grunt.registerTask 'default', ['clean', 'ts', 'dts_bundle']
+  grunt.registerTask 'default', ['clean:dev', 'ts:build', 'clean:dist', 'ts:dist']

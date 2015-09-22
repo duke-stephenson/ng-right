@@ -1,7 +1,5 @@
 
 
-///<reference path="./../ts/typings/angularjs/angular.d.ts"/>
-/// <reference path="./../ts/typings/angular-ui-router/angular-ui-router.d.ts" />
 
 declare module 'ng-right' {
     var Attribute: typeof ngRight.Attribute;

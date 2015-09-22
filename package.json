@@ -25,7 +25,6 @@
     "grunt-dts-bundle": "^0.3.0",
     "grunt-ts": "^5.0.0-beta.5",
     "load-grunt-tasks": "^3.2.0",
-    "lodash": "^3.10.1",
     "matchdep": "^0.3.0",
     "typescript": "^1.6.2"
   },

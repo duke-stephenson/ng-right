@@ -3,12 +3,9 @@
  * @version 9/21/15 4:33 PM
  */
 
-/// <reference path="./ts/_ng-right.d.ts" />
 import {Ambient} from 'ng-right';
 
-@Ambient(
-
-)
+@Ambient
 class TestAmbient {
 
 }

@@ -10,7 +10,7 @@ declare var Symbol: Function;
  */
 export const options = {
     // Default angular module. Supersedes module declarations.
-    module: <ng.IModule> null,
+    module: <angular.IModule> null,
     // Generates a template url from an element name. Another common variant:
     // 'components/elementName/elementName.html'.
     makeTemplateUrl(elementName: string): string {
@@ -21,7 +21,7 @@ export const options = {
 /**
  * Reuses or creates an angular module from the given configuration.
  */
-export function getModule(): ng.IModule {
+export function getModule(): angular.IModule {
     assert(!!options.module, 'angular module must bet set');
     return options.module;
 }
