@@ -1,10 +1,12 @@
 'use strict';
 
+///ts:ref=refs
+/// No file or directory matched name "refs" ///ts:ref:generated
+
 import * as utils from './utils';
-import lib from './lib';
 
 
-function service(config: lib.ServiceConfig|lib.ControllerConfig, type?: string) {
+function service(config: ngRight.ServiceConfig|ngRight.ControllerConfig, type?: string) {
 
     utils.assert(config != null && typeof config === 'object', `expected a configuration object, got: ${config}`);
 
@@ -12,7 +14,7 @@ function service(config: lib.ServiceConfig|lib.ControllerConfig, type?: string) 
         utils.assert(!!config.serviceName, 'you must provide a service name');
     }
     if (type === 'controller') {
-        utils.assert(!!(<lib.ControllerConfig>config).controllerName, 'you must provide a controller name');
+        utils.assert(!!(<ngRight.ControllerConfig>config).controllerName, 'you must provide a controller name');
     }
 
     return function(constructor: Function) {
@@ -42,7 +44,7 @@ function service(config: lib.ServiceConfig|lib.ControllerConfig, type?: string) 
 
         // Publish service and/or controller.
         if (type === 'controller') {
-            let conf = <lib.ControllerConfig>config;
+            let conf = <ngRight.ControllerConfig>config;
             module.controller(conf.controllerName, constructor);
             if (conf.serviceName) module.factory(conf.serviceName, () => constructor);
         }
@@ -53,7 +55,7 @@ function service(config: lib.ServiceConfig|lib.ControllerConfig, type?: string) 
 /**
  * Defines a generic angular service.
  */
-export function Service(config: lib.ServiceConfig) {
+export function Service(config: ngRight.ServiceConfig) {
     return service(config, 'service');
 }
 
@@ -66,7 +68,7 @@ export function Service(config: lib.ServiceConfig) {
  */
 export function Ambient(configOrClass: any) {
     if (typeof configOrClass === 'function') {
-        return AmbientBase({}).apply(null, arguments);
+        return AmbientBase(<ngRight.BaseConfig>{}).apply(null, arguments);
     }
     return AmbientBase.apply(null, arguments);
 }
@@ -75,8 +77,8 @@ export function Ambient(configOrClass: any) {
  * Ambient service. We inject it with DI values without exporting the class
  * into the angular DI environment.
  */
-function AmbientBase(config: lib.BaseConfig) {
-    return service(<lib.ServiceConfig>config);
+function AmbientBase(config: ngRight.BaseConfig) {
+    return service(<ngRight.ServiceConfig>config);
 }
 
 /**
@@ -84,6 +86,7 @@ function AmbientBase(config: lib.BaseConfig) {
  * module.controller under the given name. Can also optionally be published as
  * a service.
  */
-export function Controller(config: lib.ControllerConfig) {
+export function Controller(config: ngRight.ControllerConfig) {
     return service(config, 'controller');
 }
+

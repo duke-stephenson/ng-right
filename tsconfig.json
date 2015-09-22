@@ -1,25 +1,37 @@
 {
     "version": "1.6.2",
     "compilerOptions": {
-        "declaration": true,
         "noImplicitAny": false,
-        "compile": false,
-        "noEmit": false,
         "failOnTypeErrors": true,
         "experimentalDecorators": true,
         "module": "commonjs",
-        "moduleResolution": "node",
         "target": "es5",
         "rootDir": ".",
-        "outDir": "js",
         "fast": "never",
-        "sourceMap": false
+        "outDir": "lib",
+        "sourceMap": false,
+        "noExternalResolve": true
     },
     "exclude": [
         "node_modules",
-        "js",
-        "js/.baseDir.ts",
-        ".baseDir.ts",
-        "ts/.baseDir.ts"
+        "lib",
+        "ng-right-tests.ts"
+    ],
+    "filesGlob": [
+        "./ts/**/*.ts",
+        "./typings/**/*.ts",
+        "!**/*baseDir*",
+        "!ts/refs.ts"
+    ],
+    "files": [
+        "ts/bindings.ts",
+        "ts/bootstrap.ts",
+        "ts/directives.ts",
+        "ts/index.ts",
+        "ts/inject.ts",
+        "ts/services.ts",
+        "ts/state.ts",
+        "ts/utils.ts",
+        "typings/ng-right/ng-right.d.ts"
     ]
 }

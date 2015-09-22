@@ -5,15 +5,14 @@
 
 
 ///ts:ref=refs
-/// <reference path="./refs.ts"/> ///ts:ref:generated
+/// No file or directory matched name "refs" ///ts:ref:generated
 
-import lib from './lib';
 import * as utils from './utils';
 
 
-function state(options: lib.StateConfig) {
+function state(options: ngRight.StateConfig) {
 
-    return function(target: lib.StateClass) {
+    return function(target: ngRight.StateClass) {
 
         var module              = utils.getModule();
         var resolvedServiceName = utils.camelCase(target.selector || (options.name + '').replace('.', '-'));
@@ -64,7 +63,7 @@ function state(options: lib.StateConfig) {
                 } else if (!target.selector) {
                     if (target.$inject && target.$inject.length && deps && deps.length) {
 
-                        userController = <lib.StateClass>target;
+                        userController = <ngRight.StateClass>target;
                         deps.forEach(function(dep) {
                             var i = userController.$inject.indexOf(dep);
                             if (i !== -1)
@@ -179,3 +178,4 @@ export function State(options: angular.ui.IState) {
     utils.assert(!!options, '@State: Valid options are: name, url, defaultRoute, template, resolve, abstract.');
     return state(options);
 }
+

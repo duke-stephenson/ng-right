@@ -1,6 +1,7 @@
 'use strict';
 
-import lib from './lib';
+///ts:ref=refs
+/// No file or directory matched name "refs" ///ts:ref:generated
 
 declare var Symbol: Function;
 
@@ -9,7 +10,7 @@ declare var Symbol: Function;
  */
 export const options = {
     // Default angular module. Supersedes module declarations.
-    module: <ng.IModule> null,
+    module: <angular.IModule> null,
     // Generates a template url from an element name. Another common variant:
     // 'components/elementName/elementName.html'.
     makeTemplateUrl(elementName: string): string {
@@ -20,16 +21,16 @@ export const options = {
 /**
  * Reuses or creates an angular module from the given configuration.
  */
-export function getModule(): ng.IModule {
+export function getModule(): angular.IModule {
     assert(!!options.module, 'angular module must bet set');
     return options.module;
 }
 
-export function getCtrlAs(config: lib.DirectiveConfig) {
+export function getCtrlAs(config: ngRight.DirectiveConfig) {
     return config.controllerAs || camelCase(config.selector);
 }
 
-export function setOptions(opts: lib.OptionsConfig) {
+export function setOptions(opts: ngRight.OptionsConfig) {
     angular.extend(options, opts);
 }
 

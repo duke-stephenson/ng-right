@@ -6,10 +6,9 @@
 
 
 ///ts:ref=refs
-/// <reference path="./refs.ts"/> ///ts:ref:generated
+/// No file or directory matched name "refs" ///ts:ref:generated
 
 import * as utils from './utils';
-import lib from './lib';
 
 /**
  * Property binding decorator. Takes a string property descriptor, like '@' or
@@ -83,7 +82,7 @@ function bindStringBase(key: string = '') {
  *     second: any;
  *   }
  */
-export function bindTwoWay(targetOrOptions: any|lib.BindTwoWayOptions, keyOrNothing?: string) {
+export function bindTwoWay(targetOrOptions: any|ngRight.BindTwoWayOptions, keyOrNothing?: string) {
     if (targetOrOptions != null && typeof targetOrOptions === 'object' && typeof keyOrNothing === 'string') {
         bindTwoWayBase()(targetOrOptions, keyOrNothing);
     }
@@ -100,7 +99,7 @@ export function bindTwoWay(targetOrOptions: any|lib.BindTwoWayOptions, keyOrNoth
  *     second: any;
  *   }
  */
-function bindTwoWayBase(options: lib.BindTwoWayOptions = {}) {
+function bindTwoWayBase(options: ngRight.BindTwoWayOptions = {}) {
     return function(target: any, propertyName: string): void {
         var Class = target.constructor;
         if (!Class[utils.scopeKey]) Class[utils.scopeKey] = {};
@@ -196,3 +195,5 @@ function bindOneWayBase(key: string = '') {
 function encodeDescriptor(options): string {
     return (options.collection ? '*' : '') + (options.optional ? '?' : '') + (options.key || '');
 }
+
+
