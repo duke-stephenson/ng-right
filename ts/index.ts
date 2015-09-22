@@ -1,8 +1,5 @@
 'use strict';
 
-///ts:ref=refs
-/// <reference path="./refs.ts"/> ///ts:ref:generated
-
 export * from './bindings';
 export * from './directives';
 export * from './services';

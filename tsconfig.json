@@ -1,25 +1,20 @@
 {
-    "version": "1.6.2",
-    "compilerOptions": {
-        "declaration": true,
-        "noImplicitAny": false,
-        "compile": false,
-        "noEmit": false,
-        "failOnTypeErrors": true,
-        "experimentalDecorators": true,
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "target": "es5",
-        "rootDir": ".",
-        "outDir": "js",
-        "fast": "never",
-        "sourceMap": false
-    },
-    "exclude": [
-        "node_modules",
-        "js",
-        "js/.baseDir.ts",
-        ".baseDir.ts",
-        "ts/.baseDir.ts"
-    ]
+  "version": "1.6.2",
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "failOnTypeErrors": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es5",
+    "rootDir": ".",
+    "outDir": "js",
+    "fast": "never",
+    "sourceMap": false,
+    "noExternalResolve": true
+  },
+  "exclude": [
+    "node_modules",
+    "js"
+  ]
 }
