@@ -3,13 +3,15 @@
  * @version 9/21/15 1:31 AM
  */
 
+///ts:ref=refs
+/// <reference path="./refs.ts"/> ///ts:ref:generated
+
 import {setOptions} from './utils';
-import lib from './lib';
 
 
-function bootstrap(options: lib.OptionsConfig) {
+function bootstrap(options: ngRight.OptionsConfig) {
 
-    return function(target: lib.StateClass) {
+    return function(target: ngRight.StateClass) {
 
         setOptions(options);
 
@@ -34,7 +36,7 @@ function bootstrap(options: lib.OptionsConfig) {
 }
 
 
-export function Bootstrap(options: lib.OptionsConfig) {
+export function Bootstrap(options: ngRight.OptionsConfig) {
     return bootstrap(options);
 }
 

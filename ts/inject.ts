@@ -8,13 +8,12 @@
 
 
 import * as utils from './utils';
-import lib from './lib';
 
 
-function inject(config: lib.InjectConfig) {
+function inject(config: ngRight.InjectConfig) {
     let deps = config.deps;
 
-    return function(target: lib.ControllerClass) {
+    return function(target: ngRight.ControllerClass) {
 
         target.$inject = target.$inject || [];
 
@@ -25,8 +24,10 @@ function inject(config: lib.InjectConfig) {
     };
 }
 
-export function Inject(config: lib.InjectConfig) {
+export function Inject(config: ngRight.InjectConfig) {
     utils.assert(config != null && typeof config === 'object', `expected a configuration object, got: ${config}`);
     utils.assert(config.deps.length, '@Inject: No dependencies passed in');
     return inject(config);
 }
+
+
