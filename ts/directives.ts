@@ -1,14 +1,16 @@
 'use strict';
 
+///ts:ref=refs
+/// No file or directory matched name "refs" ///ts:ref:generated
+
 import * as utils from './utils';
-import lib from './lib';
 
 /**
  * Shared directive definition logic.
  */
-function directive(config: lib.DirectiveConfig) {
+function directive(config: ngRight.DirectiveConfig) {
 
-    return function(constructor: lib.ControllerClass) {
+    return function(constructor: ngRight.ControllerClass) {
 
         var module        = utils.getModule();
         var directiveName = utils.camelCase(config.selector);
@@ -65,13 +67,13 @@ function directive(config: lib.DirectiveConfig) {
 /**
  * Defines an angular component (custom element).
  */
-export function Component(config: lib.DirectiveConfig) {
+export function Component(config: ngRight.DirectiveConfig) {
     utils.assert(config != null && typeof config === 'object', `expected a configuration object, got: ${config}`);
     utils.assert(!!config.selector, 'you must provide a selector');
 
     var selector = utils.kebabCase(config.selector);
 
-    var directiveConfig: lib.DirectiveConfig = {
+    var directiveConfig: ngRight.DirectiveConfig = {
         selector: config.selector,
         restrict: 'E',
         scope: {},
@@ -90,11 +92,11 @@ export function Component(config: lib.DirectiveConfig) {
 /**
  * Defines an attribute directive.
  */
-export function Attribute(config: lib.DirectiveConfig) {
+export function Attribute(config: ngRight.DirectiveConfig) {
     utils.assert(config != null && typeof config === 'object', `expected a configuration object, got: ${config}`);
     utils.assert(!!config.selector, 'you must provide a selector');
 
-    var directiveConfig: lib.DirectiveConfig = {
+    var directiveConfig: ngRight.DirectiveConfig = {
         selector: config.selector,
         restrict: 'A',
         scope: false

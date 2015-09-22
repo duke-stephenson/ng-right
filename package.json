@@ -1,6 +1,6 @@
 {
   "name": "ng-right",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Angular 2 component syntax for Angular 1 apps",
   "author": "John Walker",
   "license": "MIT",
@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git://github.com/j-walker23/ng-right.git"
   },
-  "main": "js/index.js",
+  "main": "dist/ng-right",
   "keywords": [
     "angular",
     "angular1",
@@ -17,28 +17,34 @@
     "decorators",
     "babel"
   ],
+  "files": [
+    "LICENSE",
+    "changelog.md",
+    "typings/",
+    "dist/",
+    "lib/"
+  ],
   "devDependencies": {
-    "dts-generator": "^1.5.0",
     "grunt": "^0.4.5",
+    "grunt-browserify": "^4.0.1",
     "grunt-bump": "^0.5.0",
     "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-watch": "^0.6.1",
     "grunt-conventional-changelog": "^4.1.0",
-    "grunt-dts-bundle": "^0.3.0",
     "grunt-ts": "^5.0.0-beta.5",
+    "grunt-webpack": "^1.0.11",
     "load-grunt-tasks": "^3.2.0",
-    "lodash": "^3.10.1",
     "matchdep": "^0.3.0",
-    "tslint": "^2.5.0",
-    "typescript": "^1.6.2"
+    "typescript": "^1.6.2",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.11.0"
   },
-  "typings": "js/index",
+  "typings": "typings/ng-right/ng-right.d.ts",
   "typescript": {
-    "definition": "js/index.d.ts"
+    "definition": "typings/ng-right/ng-right.d.ts"
   },
   "jspm": {
     "directories": {
-      "lib": "js"
+      "lib": "lib"
     },
     "main": "index",
     "format": "cjs"

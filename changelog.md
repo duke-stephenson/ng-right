@@ -1,3 +1,36 @@
+<a name="0.0.3"></a>
+## [0.0.3](https://github.com/j-walker23/ng-right/compare/0.0.2...v0.0.3) (2015-09-22)
+
+
+### Bug Fixes
+
+* **refs:** add back in ([ddf4425](https://github.com/j-walker23/ng-right/commit/ddf4425))
+* **release:** publish npm ([e402d2a](https://github.com/j-walker23/ng-right/commit/e402d2a))
+* **tsconfig:** right paths ([0a14717](https://github.com/j-walker23/ng-right/commit/0a14717))
+
+### Features
+
+* **final:** this shiz ([d5c53c3](https://github.com/j-walker23/ng-right/commit/d5c53c3))
+* **final:** this shiz ([3cb51d6](https://github.com/j-walker23/ng-right/commit/3cb51d6))
+* **grunt-ts:** back to normal dumbass ([ae167e5](https://github.com/j-walker23/ng-right/commit/ae167e5))
+* **grunt-ts:** back to normal dumbass ([f03577f](https://github.com/j-walker23/ng-right/commit/f03577f))
+* **ignore:** fucking baseDir files ([b06270f](https://github.com/j-walker23/ng-right/commit/b06270f))
+* **lib:** export it right maybe? ([48592d9](https://github.com/j-walker23/ng-right/commit/48592d9))
+* **lib:** export it right maybe? ([3124574](https://github.com/j-walker23/ng-right/commit/3124574))
+* **npm:** first publish ([2c5572c](https://github.com/j-walker23/ng-right/commit/2c5572c))
+* **npm:** first publish ([e1687c0](https://github.com/j-walker23/ng-right/commit/e1687c0))
+* **npm:** first publish ([726d2d9](https://github.com/j-walker23/ng-right/commit/726d2d9))
+* **npm:** first publish ([d5d5202](https://github.com/j-walker23/ng-right/commit/d5d5202))
+* **npm:** first publish ([dfad9f8](https://github.com/j-walker23/ng-right/commit/dfad9f8))
+* **npm:** first publish ([f1dd3ca](https://github.com/j-walker23/ng-right/commit/f1dd3ca))
+* **npm:** publish ([04b4da1](https://github.com/j-walker23/ng-right/commit/04b4da1))
+* **release:** build release 0.0.1 ([a4151c7](https://github.com/j-walker23/ng-right/commit/a4151c7))
+* **release:** build release 0.0.2 ([2ef70c3](https://github.com/j-walker23/ng-right/commit/2ef70c3))
+* **release:** build release 0.0.3 ([d073956](https://github.com/j-walker23/ng-right/commit/d073956))
+* **webpack:** bundle for non typescript ([1e57348](https://github.com/j-walker23/ng-right/commit/1e57348))
+
+
+
 <a name="0.0.2"></a>
 ## [0.0.2](https://github.com/j-walker23/ng-right/compare/0.0.1...v0.0.2) (2015-09-21)
 

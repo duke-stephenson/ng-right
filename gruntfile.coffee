@@ -3,18 +3,17 @@
 
 
 module.exports = (grunt) ->
-
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
-  grunt.loadNpmTasks 'dts-generator'
 
   paths =
     types:
-      dev: ['ts/**/*.ts', '!ts/.baseDir.ts']
       ref: 'ts/refs.ts'
 
   tasks =
 
-    clean: 'js'
+    clean:
+      build: ['lib', 'dist']
+      dist: 'ts/.baseDir.*'
 
     conventionalChangelog:
       options:
@@ -37,45 +36,19 @@ module.exports = (grunt) ->
         push: false
         commitMessage: '%VERSION% bump'
 
-    dts_bundle:
-      build:
-        options:
-          name: 'ng-right'
-          main: 'js/index.d.ts'
-
-    dtsGenerator:
-      options:
-        name: 'package-name'
-        baseDir: 'ts'
-        out: 'package-name.d.ts'
-      build:
-        src: [ 'ts/**/*.ts' ]
+    webpack:
+      dist:
+        entry: './lib/index.js'
+        output:
+          filename: 'dist/ng-right.js'
 
     ts:
-      options:
-        emitDecoratorMetadata: true
-        failOnTypeErrors: true
-        fast: 'never'
-      dev:
-        options:
-          noExternalResolve: true
-          declaration: true
-          target: 'es5'
-          compile: true
-          module: 'commonjs'
-#          noEmit: true
-          compiler: './node_modules/typescript/lib/tsc'
-          fast: 'never'
-          sourceMap: false
-
-        files: [
-          src: '<%= types.dev %>'
-          dest: 'js'
-        ]
-#        outDir: 'js'
-#        watch: 'ts'
+      build:
         reference: '<%= types.ref %>'
+        tsconfig: 'tsconfig.json'
+
 
   grunt.initConfig grunt.util._.extend tasks, paths
 
-  grunt.registerTask 'default', ['clean', 'ts', 'dts_bundle']
+  grunt.registerTask 'build', ['clean:build', 'ts:build']
+  grunt.registerTask 'default', ['clean:build', 'ts:build', 'clean:dist', 'webpack']
