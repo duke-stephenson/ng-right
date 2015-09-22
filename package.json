@@ -17,6 +17,13 @@
     "decorators",
     "babel"
   ],
+  "files": [
+    "LICENSE",
+    "changelog.md",
+    "typings/",
+    "dist/",
+    "lib/"
+  ],
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-browserify": "^4.0.1",
