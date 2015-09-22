@@ -1,6 +1,7 @@
 'use strict';
 
-import lib from './lib';
+///ts:ref=refs
+/// <reference path="./refs.ts"/> ///ts:ref:generated
 
 declare var Symbol: Function;
 
@@ -25,11 +26,11 @@ export function getModule(): ng.IModule {
     return options.module;
 }
 
-export function getCtrlAs(config: lib.DirectiveConfig) {
+export function getCtrlAs(config: ngRight.DirectiveConfig) {
     return config.controllerAs || camelCase(config.selector);
 }
 
-export function setOptions(opts: lib.OptionsConfig) {
+export function setOptions(opts: ngRight.OptionsConfig) {
     angular.extend(options, opts);
 }
 

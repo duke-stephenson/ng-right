@@ -9,3 +9,4 @@
 .tscache/
 
 node_modules/
+typings/
