@@ -1,7 +1,7 @@
 'use strict';
 
 ///ts:ref=refs
-/// <reference path="./refs.ts"/> ///ts:ref:generated
+/// No file or directory matched name "refs" ///ts:ref:generated
 
 declare var Symbol: Function;
 

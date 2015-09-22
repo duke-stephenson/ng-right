@@ -3,12 +3,10 @@
 
 
 module.exports = (grunt) ->
-
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
 
   paths =
     types:
-      dev: ['ts/**/*.ts', '!ts/.baseDir.ts']
       ref: 'ts/refs.ts'
 
   tasks =
@@ -39,19 +37,12 @@ module.exports = (grunt) ->
         commitMessage: '%VERSION% bump'
 
     ts:
-      dev:
-        reference: '<%= types.ref %>'
-        tsconfig: 'tsconfig.json'
-        options:
-          watch: 'ts'
       build:
         reference: '<%= types.ref %>'
         tsconfig: 'tsconfig.json'
-      dist:
-        tsconfig: 'tsconfig.json'
-        out: 'dist/ng-right'
 
 
   grunt.initConfig grunt.util._.extend tasks, paths
 
-  grunt.registerTask 'default', ['clean:build', 'ts:build', 'clean:dist', 'ts:dist']
+  grunt.registerTask 'build', ['clean:build', 'ts:build']
+  grunt.registerTask 'default', ['clean:build', 'ts:build', 'clean:dist']
