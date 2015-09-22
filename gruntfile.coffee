@@ -14,7 +14,7 @@ module.exports = (grunt) ->
   tasks =
 
     clean:
-      dev: 'js'
+      build: 'lib'
       dist: 'ts/.baseDir.*'
 
     conventionalChangelog:
@@ -38,14 +38,6 @@ module.exports = (grunt) ->
         push: false
         commitMessage: '%VERSION% bump'
 
-    dts_bundle:
-      build:
-        options:
-          externals: true
-          name: 'ng-right'
-          main: 'js/index.d.ts'
-          out: '../ng-right/ng-right.d.ts'
-
     ts:
       dev:
         reference: '<%= types.ref %>'
@@ -62,4 +54,4 @@ module.exports = (grunt) ->
 
   grunt.initConfig grunt.util._.extend tasks, paths
 
-  grunt.registerTask 'default', ['clean:dev', 'ts:build', 'clean:dist', 'ts:dist']
+  grunt.registerTask 'default', ['clean:build', 'ts:build', 'clean:dist', 'ts:dist']
