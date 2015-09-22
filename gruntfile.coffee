@@ -12,7 +12,7 @@ module.exports = (grunt) ->
   tasks =
 
     clean:
-      build: 'lib'
+      build: ['lib', 'dist']
       dist: 'ts/.baseDir.*'
 
     conventionalChangelog:
@@ -36,6 +36,12 @@ module.exports = (grunt) ->
         push: false
         commitMessage: '%VERSION% bump'
 
+    webpack:
+      dist:
+        entry: './lib/index.js'
+        output:
+          filename: 'dist/ng-right.js'
+
     ts:
       build:
         reference: '<%= types.ref %>'
@@ -45,4 +51,4 @@ module.exports = (grunt) ->
   grunt.initConfig grunt.util._.extend tasks, paths
 
   grunt.registerTask 'build', ['clean:build', 'ts:build']
-  grunt.registerTask 'default', ['clean:build', 'ts:build', 'clean:dist']
+  grunt.registerTask 'default', ['clean:build', 'ts:build', 'clean:dist', 'webpack']
