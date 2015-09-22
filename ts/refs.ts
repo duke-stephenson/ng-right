@@ -1,4 +1,3 @@
-
 //grunt-start
 /// <reference path="bindings.ts" />
 /// <reference path="bootstrap.ts" />

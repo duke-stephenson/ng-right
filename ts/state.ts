@@ -5,7 +5,7 @@
 
 
 ///ts:ref=refs
-/// <reference path="./refs.ts"/> ///ts:ref:generated
+/// No file or directory matched name "refs" ///ts:ref:generated
 
 import * as utils from './utils';
 
