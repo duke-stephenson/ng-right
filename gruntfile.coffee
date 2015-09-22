@@ -40,39 +40,15 @@ module.exports = (grunt) ->
     dts_bundle:
       build:
         options:
+          externals: true
           name: 'ng-right'
           main: 'js/index.d.ts'
-
-    dtsGenerator:
-      options:
-        name: 'package-name'
-        baseDir: 'ts'
-        out: 'package-name.d.ts'
-      build:
-        src: [ 'ts/**/*.ts' ]
+          out: '../ng-right/ng-right.d.ts'
 
     ts:
-      options:
-        emitDecoratorMetadata: true
-        failOnTypeErrors: true
-        fast: 'never'
       dev:
         options:
-          noExternalResolve: true
-          declaration: true
-          target: 'es5'
-          compile: true
-          module: 'commonjs'
-#          noEmit: true
-          compiler: './node_modules/typescript/lib/tsc'
-          fast: 'never'
-          sourceMap: false
-
-        files: [
-          src: '<%= types.dev %>'
-          dest: 'js'
-        ]
-#        outDir: 'js'
+          tsconfig: 'tsconfig.json'
 #        watch: 'ts'
         reference: '<%= types.ref %>'
 
