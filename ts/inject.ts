@@ -24,7 +24,10 @@ function inject(config: ngRight.InjectConfig) {
     };
 }
 
-export function Inject(config: ngRight.InjectConfig) {
+export function Inject(...deps: string[]) {
+    let config: ngRight.InjectConfig = {
+        deps: deps
+    };
     utils.assert(config != null && typeof config === 'object', `expected a configuration object, got: ${config}`);
     utils.assert(config.deps.length, '@Inject: No dependencies passed in');
     return inject(config);

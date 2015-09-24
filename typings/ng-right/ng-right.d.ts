@@ -1,12 +1,20 @@
-
+// Type definitions for ng-right v0.0.3
+// Project: https://github.com/j-walker23/ng-right.git
+// Definitions by: John Walker <https://github.com/j-walker23>
+// Definitions: https://github.com/borisyankov/DefinitelyTyped
 
 
 declare module 'ng-right' {
     var Attribute: typeof ngRight.Attribute;
     var Ambient: typeof ngRight.Ambient;
+    var Bootstrap: typeof ngRight.Bootstrap;
     var Component: typeof ngRight.Component;
-    var Service: typeof ngRight.Service;
     var Controller: typeof ngRight.Controller;
+    var Inject: typeof ngRight.Inject;
+    var Service: typeof ngRight.Service;
+    var State: typeof ngRight.State;
+    var View: typeof ngRight.View;
+
     var autoinject: typeof ngRight.autoinject;
     var bindTwoWay: typeof ngRight.bindTwoWay;
     var bindOneWay: typeof ngRight.bindOneWay;
@@ -20,9 +28,13 @@ declare module ngRight {
     function Attribute(config: DirectiveConfig): ClassDecorator;
     function Ambient(config: BaseConfig): ClassDecorator;
     function Ambient(target: Function): void;
+    function Bootstrap(config: OptionsConfig): ClassDecorator;
     function Component(config: DirectiveConfig): ClassDecorator;
-    function Service(config: ServiceConfig): ClassDecorator;
     function Controller(config: ControllerConfig): ClassDecorator;
+    function Inject(...deps: string[]): ClassDecorator;
+    function Service(config: ServiceConfig): ClassDecorator;
+    function State(config: StateConfig): ClassDecorator;
+    function View(config: ViewConfig): ClassDecorator;
 
     // Property decorators.
     function autoinject(target: any, key: string);
@@ -75,6 +87,7 @@ declare module ngRight {
         templateUrl?: string|Function;
         link?: Function;
         compile?: any;
+        transclude?: boolean;
     }
 
     interface StateConfig extends angular.ui.IState {
@@ -86,6 +99,12 @@ declare module ngRight {
         selector?: string;
         resolve?: {};
         bootstrap?: any;
+    }
+
+    interface ViewConfig {
+        template?: string;
+        templateUrl?: string;
+        transclude?: boolean;
     }
 
     interface BindTwoWayOptions {
