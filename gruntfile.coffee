@@ -47,6 +47,20 @@ module.exports = (grunt) ->
         reference: '<%= types.ref %>'
         tsconfig: 'tsconfig.json'
 
+      test:
+        src: [
+          'ng-right-tests.ts'
+          'typings/**/*.ts'
+        ]
+        options:
+          noImplicitAny: false
+          experimentalDecorators: true
+          module: 'commonjs'
+          target: 'es5'
+          noEmit: true
+          sourceMap: false
+
+
 
   grunt.initConfig grunt.util._.extend tasks, paths
 
