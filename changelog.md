@@ -1,3 +1,14 @@
+<a name="0.0.4"></a>
+## [0.0.4](https://github.com/j-walker23/ng-right/compare/0.0.3...v0.0.4) (2015-09-24)
+
+
+### Features
+
+* **release:** build release 0.0.4 ([dac04b0](https://github.com/j-walker23/ng-right/commit/dac04b0))
+* **view:** added view, please work ([1be943f](https://github.com/j-walker23/ng-right/commit/1be943f))
+
+
+
 <a name="0.0.3"></a>
 ## [0.0.3](https://github.com/j-walker23/ng-right/compare/0.0.2...v0.0.3) (2015-09-22)
 
