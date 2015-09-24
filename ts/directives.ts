@@ -44,6 +44,14 @@ function directive(config: ngRight.DirectiveConfig) {
         var inject               = (constructor.prototype[utils.autoinjectKey] || []).concat(fromInjectClassDecor);
         var injectStatic         = constructor[utils.autoinjectKey] || [];
 
+        if (constructor.template)
+            config.template = constructor.template;
+        if (constructor.templateUrl)
+            config.templateUrl = constructor.templateUrl;
+        if (constructor.transclude)
+            config.transclude = constructor.transclude;
+
+
         // Directive function that assigns the injected services to the constructor.
         definition.$inject = inject.concat(injectStatic);
         function definition(...injected) {
@@ -80,9 +88,9 @@ export function Component(config: ngRight.DirectiveConfig) {
         controllerAs: utils.getCtrlAs(config),
         bindToController: true
     };
-    if (config.template == null && config.templateUrl === undefined) {
+
+    if (config.template == null && config.templateUrl === undefined)
         directiveConfig.templateUrl = utils.options.makeTemplateUrl(selector);
-    }
 
     angular.extend(directiveConfig, config);
 
@@ -105,4 +113,35 @@ export function Attribute(config: ngRight.DirectiveConfig) {
     angular.extend(directiveConfig, config);
 
     return directive(directiveConfig);
+}
+
+export function View(config: ngRight.ControllerClass) {
+    utils.assert(config != null && typeof config === 'object', `expected a configuration object, got: ${config}`);
+    var tpl = config.template || config.templateUrl;
+    utils.assert(!!tpl, 'Define a template retard');
+
+    return function(constructor: ngRight.ControllerClass) {
+
+        //if (typeof config.template === 'string') {
+        //    constructor.template = transcludeContent(config.template);
+        //    if (/ng-transclude/i.test(<string>config.template))
+        //        constructor.transclude = true;
+        //}
+        //
+        //if (config.templateUrl === 'string')
+        //    constructor.templateUrl = config.templateUrl;
+
+        return constructor;
+    };
+}
+
+// If template contains the new <content> tag then add ng-transclude to it.
+// This will be picked up in @Component, where ddo.transclude will be set to true.
+function transcludeContent(template) {
+    var s = (template || '').match(/\<content[ >]([^\>]+)/i);
+    if (s) {
+        if (s[1].toLowerCase().indexOf('ng-transclude') === -1)
+            template = template.replace(/\<content/i, '<content ng-transclude');
+    }
+    return template;
 }

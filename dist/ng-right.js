@@ -274,6 +274,12 @@
 	        var fromInjectClassDecor = constructor.$inject || [];
 	        var inject = (constructor.prototype[utils.autoinjectKey] || []).concat(fromInjectClassDecor);
 	        var injectStatic = constructor[utils.autoinjectKey] || [];
+	        if (constructor.template)
+	            config.template = constructor.template;
+	        if (constructor.templateUrl)
+	            config.templateUrl = constructor.templateUrl;
+	        if (constructor.transclude)
+	            config.transclude = constructor.transclude;
 	        definition.$inject = inject.concat(injectStatic);
 	        function definition() {
 	            var injected = [];
@@ -303,9 +309,8 @@
 	        controllerAs: utils.getCtrlAs(config),
 	        bindToController: true
 	    };
-	    if (config.template == null && config.templateUrl === undefined) {
+	    if (config.template == null && config.templateUrl === undefined)
 	        directiveConfig.templateUrl = utils.options.makeTemplateUrl(selector);
-	    }
 	    angular.extend(directiveConfig, config);
 	    return directive(directiveConfig);
 	}
@@ -322,6 +327,31 @@
 	    return directive(directiveConfig);
 	}
 	exports.Attribute = Attribute;
+	function View(config) {
+	    utils.assert(config != null && typeof config === 'object', "expected a configuration object, got: " + config);
+	    var tpl = config.template || config.templateUrl;
+	    utils.assert(!!tpl, 'Define a template retard');
+	    return function (constructor) {
+	        //if (typeof config.template === 'string') {
+	        //    constructor.template = transcludeContent(config.template);
+	        //    if (/ng-transclude/i.test(<string>config.template))
+	        //        constructor.transclude = true;
+	        //}
+	        //
+	        //if (config.templateUrl === 'string')
+	        //    constructor.templateUrl = config.templateUrl;
+	        return constructor;
+	    };
+	}
+	exports.View = View;
+	function transcludeContent(template) {
+	    var s = (template || '').match(/\<content[ >]([^\>]+)/i);
+	    if (s) {
+	        if (s[1].toLowerCase().indexOf('ng-transclude') === -1)
+	            template = template.replace(/\<content/i, '<content ng-transclude');
+	    }
+	    return template;
+	}
 
 
 /***/ },
@@ -405,7 +435,14 @@
 	        return target;
 	    };
 	}
-	function Inject(config) {
+	function Inject() {
+	    var deps = [];
+	    for (var _i = 0; _i < arguments.length; _i++) {
+	        deps[_i - 0] = arguments[_i];
+	    }
+	    var config = {
+	        deps: deps
+	    };
 	    utils.assert(config != null && typeof config === 'object', "expected a configuration object, got: " + config);
 	    utils.assert(config.deps.length, '@Inject: No dependencies passed in');
 	    return inject(config);
