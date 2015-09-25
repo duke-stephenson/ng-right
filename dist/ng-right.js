@@ -162,7 +162,7 @@
 	exports.options = {
 	    module: null,
 	    makeTemplateUrl: function (elementName) {
-	        return elementName + "/" + elementName + ".html";
+	        return elementName + "/" + elementName + ".tpl.html";
 	    }
 	};
 	function getModule() {
