@@ -21,7 +21,9 @@ declare module 'ng-right' {
     var bindString: typeof ngRight.bindString;
     var bindExpression: typeof ngRight.bindExpression;
 
-    const options: {
+    function setModule(module: angular.IModule): void;
+
+    let options: {
         module: angular.IModule;
         makeTemplateUrl: (name: string) => string;
     };
