@@ -1,3 +1,17 @@
+<a name="0.0.6"></a>
+## [0.0.6](https://github.com/j-walker23/ng-right/compare/0.0.5...v0.0.6) (2015-09-25)
+
+
+### Bug Fixes
+
+* **declare-file:** options for module ([f8d6b2f](https://github.com/j-walker23/ng-right/commit/f8d6b2f))
+
+### Features
+
+* **release:** build release 0.0.6 ([510c6a7](https://github.com/j-walker23/ng-right/commit/510c6a7))
+
+
+
 <a name="0.0.5"></a>
 ## [0.0.5](https://github.com/j-walker23/ng-right/compare/0.0.4...v0.0.5) (2015-09-25)
 
