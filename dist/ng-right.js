@@ -55,7 +55,6 @@
 	__export(__webpack_require__(6));
 	__export(__webpack_require__(7));
 	var utils_1 = __webpack_require__(2);
-	exports.setModule = utils_1.setModule;
 	exports.options = utils_1.options;
 	exports.autoinject = utils_1.autoinject;
 
@@ -167,11 +166,6 @@
 	        return elementName + "/" + elementName + ".tpl.html";
 	    }
 	};
-	function setModule(module) {
-	    console.log('module', module, exports.options.module);
-	    exports.options.module = module;
-	}
-	exports.setModule = setModule;
 	function getModule() {
 	    assert(!!exports.options.module, 'angular module must bet set');
 	    return exports.options.module;
@@ -540,10 +534,13 @@
 	 * @version 9/21/15 1:31 AM
 	 */
 	var utils_1 = __webpack_require__(2);
+	var isSet = false;
 	function bootstrap(options) {
 	    return function (target) {
 	        utils_1.setOptions(options);
 	        target.bootstrap = true;
+	        if (isSet)
+	            return;
 	        angular.element(document).ready(onReady);
 	        function onReady() {
 	            var el = document.body;
@@ -551,6 +548,7 @@
 	                el = document.querySelector(target.selector);
 	            }
 	            angular.bootstrap(el, [options.module.name], options.ng);
+	            isSet = true;
 	        }
 	    };
 	}
