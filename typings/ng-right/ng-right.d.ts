@@ -42,7 +42,7 @@ declare module ngRight {
     function View(config: ViewConfig): ClassDecorator;
 
     // Property decorators.
-    function autoinject(target: any, key: string);
+    function autoinject(target: any, key: string): void;
     function bindTwoWay(options: BindTwoWayOptions): PropertyDecorator;
     function bindTwoWay(target: any, key: string): void;
     function bindOneWay(key: string): PropertyDecorator;
