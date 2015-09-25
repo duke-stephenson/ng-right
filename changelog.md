@@ -1,3 +1,18 @@
+<a name="0.0.11"></a>
+## [0.0.11](https://github.com/j-walker23/ng-right/compare/0.0.10...v0.0.11) (2015-09-25)
+
+
+### Bug Fixes
+
+* **module:** remove test code ([60004be](https://github.com/j-walker23/ng-right/commit/60004be))
+* **module:** test ([46560a5](https://github.com/j-walker23/ng-right/commit/46560a5))
+
+### Features
+
+* **release:** build release 0.0.11 ([485834a](https://github.com/j-walker23/ng-right/commit/485834a))
+
+
+
 <a name="0.0.10"></a>
 ## [0.0.10](https://github.com/j-walker23/ng-right/compare/0.0.9...v0.0.10) (2015-09-25)
 
