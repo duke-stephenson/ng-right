@@ -166,6 +166,11 @@
 	        return elementName + "/" + elementName + ".tpl.html";
 	    }
 	};
+	function setModule(module) {
+	    console.log('module', module);
+	    exports.options.module = module;
+	}
+	exports.setModule = setModule;
 	function getModule() {
 	    assert(!!exports.options.module, 'angular module must bet set');
 	    return exports.options.module;
