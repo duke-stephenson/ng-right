@@ -168,7 +168,7 @@
 	    }
 	};
 	function setModule(module) {
-	    console.log('module', module);
+	    console.log('module', module, exports.options.module);
 	    exports.options.module = module;
 	}
 	exports.setModule = setModule;
