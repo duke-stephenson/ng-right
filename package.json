@@ -46,9 +46,9 @@
   },
   "jspm": {
     "directories": {
-      "lib": "lib"
+      "lib": "ts"
     },
     "main": "index",
-    "format": "cjs"
+    "format": "es6"
   }
 }
