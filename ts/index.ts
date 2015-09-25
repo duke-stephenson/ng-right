@@ -6,4 +6,4 @@ export * from './services';
 export * from './inject';
 export * from './state';
 export * from './bootstrap';
-export {options, autoinject} from './utils';
+export {setModule, options, autoinject} from './utils';
