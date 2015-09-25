@@ -8,6 +8,7 @@
 
 import {setOptions} from './utils';
 
+let isSet = false;
 
 function bootstrap(options: ngRight.OptionsConfig) {
 
@@ -18,6 +19,9 @@ function bootstrap(options: ngRight.OptionsConfig) {
         // Mark this class as a bootstrap component. This allows @State
         // to handle it correctly.
         target.bootstrap = true;
+
+        if (isSet)
+            return;
 
         angular.element(document).ready(onReady);
 
@@ -30,6 +34,7 @@ function bootstrap(options: ngRight.OptionsConfig) {
             }
 
             angular.bootstrap(el, [options.module.name], options.ng);
+            isSet = true;
         }
 
     };

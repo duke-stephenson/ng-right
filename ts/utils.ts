@@ -18,11 +18,6 @@ export let options = {
     }
 };
 
-export function setModule(module: angular.IModule): void {
-    console.log('module', module, options.module);
-    options.module = module;
-}
-
 /**
  * Reuses or creates an angular module from the given configuration.
  */
