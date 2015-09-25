@@ -8,7 +8,7 @@ declare var Symbol: Function;
 /**
  * Mutable configuration object.
  */
-export const options = {
+export let options = {
     // Default angular module. Supersedes module declarations.
     module: <angular.IModule> null,
     // Generates a template url from an element name. Another common variant:
@@ -17,6 +17,11 @@ export const options = {
         return `${elementName}/${elementName}.tpl.html`;
     }
 };
+
+export function setModule(module: angular.IModule): void {
+    console.log('module', module);
+    options.module = module;
+}
 
 /**
  * Reuses or creates an angular module from the given configuration.
