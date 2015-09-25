@@ -22,7 +22,8 @@
     "changelog.md",
     "typings/",
     "dist/",
-    "lib/"
+    "lib/",
+    "ts/"
   ],
   "devDependencies": {
     "angular": "^1.4.6",
