@@ -280,6 +280,8 @@
 	            config.templateUrl = constructor.templateUrl;
 	        if (constructor.transclude)
 	            config.transclude = constructor.transclude;
+	        if (config.template == null && config.templateUrl === undefined && !config.scope)
+	            config.templateUrl = utils.options.makeTemplateUrl(config.selector);
 	        definition.$inject = inject.concat(injectStatic);
 	        function definition() {
 	            var injected = [];
@@ -309,8 +311,6 @@
 	        controllerAs: utils.getCtrlAs(config),
 	        bindToController: true
 	    };
-	    if (config.template == null && config.templateUrl === undefined)
-	        directiveConfig.templateUrl = utils.options.makeTemplateUrl(selector);
 	    angular.extend(directiveConfig, config);
 	    return directive(directiveConfig);
 	}
@@ -332,14 +332,13 @@
 	    var tpl = config.template || config.templateUrl;
 	    utils.assert(!!tpl, 'Define a template retard');
 	    return function (constructor) {
-	        //if (typeof config.template === 'string') {
-	        //    constructor.template = transcludeContent(config.template);
-	        //    if (/ng-transclude/i.test(<string>config.template))
-	        //        constructor.transclude = true;
-	        //}
-	        //
-	        //if (config.templateUrl === 'string')
-	        //    constructor.templateUrl = config.templateUrl;
+	        if (typeof config.template === 'string') {
+	            constructor.template = transcludeContent(config.template);
+	            if (/ng-transclude/i.test(config.template))
+	                constructor.transclude = true;
+	        }
+	        if (config.templateUrl === 'string')
+	            constructor.templateUrl = config.templateUrl;
 	        return constructor;
 	    };
 	}
@@ -431,8 +430,9 @@
 	    var deps = config.deps;
 	    return function (target) {
 	        target.$inject = target.$inject || [];
-	        target.$inject.unshift.apply(target.$inject, deps);
+	        (_a = target.$inject).push.apply(_a, deps);
 	        return target;
+	        var _a;
 	    };
 	}
 	function Inject() {
