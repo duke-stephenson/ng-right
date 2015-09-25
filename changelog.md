@@ -1,3 +1,14 @@
+<a name="0.0.5"></a>
+## [0.0.5](https://github.com/j-walker23/ng-right/compare/0.0.4...v0.0.5) (2015-09-25)
+
+
+### Features
+
+* **@view:** to work with component right ([6244976](https://github.com/j-walker23/ng-right/commit/6244976))
+* **release:** build release 0.0.5 ([1ae9b87](https://github.com/j-walker23/ng-right/commit/1ae9b87))
+
+
+
 <a name="0.0.4"></a>
 ## [0.0.4](https://github.com/j-walker23/ng-right/compare/0.0.3...v0.0.4) (2015-09-24)
 
