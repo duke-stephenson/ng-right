@@ -47,6 +47,11 @@ declare module ngRight {
     function bindExpression(key: string): PropertyDecorator;
     function bindExpression(target: any, key: string): void;
 
+    const options: {
+        module: angular.IModule;
+        makeTemplateUrl: (name: string) => string;
+    };
+
     // Abstract interface shared by configuration objects.
     interface BaseConfig {
 
