@@ -14,7 +14,7 @@ export const options = {
     // Generates a template url from an element name. Another common variant:
     // 'components/elementName/elementName.html'.
     makeTemplateUrl(elementName: string): string {
-        return `${elementName}/${elementName}.html`;
+        return `${elementName}/${elementName}.tpl.html`;
     }
 };
 
