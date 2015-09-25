@@ -29,7 +29,7 @@ module.exports = (grunt) ->
     copy:
       build:
         src: 'typings/ng-right/ng-right.d.ts'
-        dest: 'lib/'
+        dest: 'ts/ng-right.d.ts'
 
     bump:
       options:
