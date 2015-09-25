@@ -19,7 +19,7 @@ export let options = {
 };
 
 export function setModule(module: angular.IModule): void {
-    console.log('module', module);
+    console.log('module', module, options.module);
     options.module = module;
 }
 
