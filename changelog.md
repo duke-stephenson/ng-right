@@ -1,3 +1,17 @@
+<a name="0.0.13"></a>
+## [0.0.13](https://github.com/j-walker23/ng-right/compare/0.0.12...v0.0.13) (2015-09-25)
+
+
+### Bug Fixes
+
+* **autoinject:** add return type ([3268e44](https://github.com/j-walker23/ng-right/commit/3268e44))
+
+### Features
+
+* **release:** build release 0.0.13 ([6f64798](https://github.com/j-walker23/ng-right/commit/6f64798))
+
+
+
 <a name="0.0.12"></a>
 ## [0.0.12](https://github.com/j-walker23/ng-right/compare/0.0.11...v0.0.12) (2015-09-25)
 
