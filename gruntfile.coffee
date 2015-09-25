@@ -26,6 +26,11 @@ module.exports = (grunt) ->
       release:
         src: 'changelog.md'
 
+    copy:
+      build:
+        src: 'typings/ng-right/ng-right.d.ts'
+        dest: 'lib/'
+
     bump:
       options:
         files: ['package.json']
@@ -65,4 +70,4 @@ module.exports = (grunt) ->
   grunt.initConfig grunt.util._.extend tasks, paths
 
   grunt.registerTask 'build', ['clean:build', 'ts:build']
-  grunt.registerTask 'default', ['clean:build', 'ts:build', 'clean:dist', 'webpack']
+  grunt.registerTask 'default', ['clean:build', 'ts:build', 'clean:dist', 'webpack', 'copy:build']
