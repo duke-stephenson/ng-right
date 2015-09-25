@@ -51,6 +51,9 @@ function directive(config: ngRight.DirectiveConfig) {
         if (constructor.transclude)
             config.transclude = constructor.transclude;
 
+        if (config.template == null && config.templateUrl === undefined && !config.scope)
+            config.templateUrl = utils.options.makeTemplateUrl(config.selector);
+
 
         // Directive function that assigns the injected services to the constructor.
         definition.$inject = inject.concat(injectStatic);
@@ -89,9 +92,6 @@ export function Component(config: ngRight.DirectiveConfig) {
         bindToController: true
     };
 
-    if (config.template == null && config.templateUrl === undefined)
-        directiveConfig.templateUrl = utils.options.makeTemplateUrl(selector);
-
     angular.extend(directiveConfig, config);
 
     return directive(directiveConfig);
@@ -122,14 +122,14 @@ export function View(config: ngRight.ControllerClass) {
 
     return function(constructor: ngRight.ControllerClass) {
 
-        //if (typeof config.template === 'string') {
-        //    constructor.template = transcludeContent(config.template);
-        //    if (/ng-transclude/i.test(<string>config.template))
-        //        constructor.transclude = true;
-        //}
-        //
-        //if (config.templateUrl === 'string')
-        //    constructor.templateUrl = config.templateUrl;
+        if (typeof config.template === 'string') {
+            constructor.template = transcludeContent(config.template);
+            if (/ng-transclude/i.test(<string>config.template))
+                constructor.transclude = true;
+        }
+
+        if (config.templateUrl === 'string')
+            constructor.templateUrl = config.templateUrl;
 
         return constructor;
     };
