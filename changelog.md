@@ -1,3 +1,17 @@
+<a name="0.0.10"></a>
+## [0.0.10](https://github.com/j-walker23/ng-right/compare/0.0.9...v0.0.10) (2015-09-25)
+
+
+### Bug Fixes
+
+* **module:** test ([9e10ce8](https://github.com/j-walker23/ng-right/commit/9e10ce8))
+
+### Features
+
+* **release:** build release 0.0.10 ([2cf6df0](https://github.com/j-walker23/ng-right/commit/2cf6df0))
+
+
+
 <a name="0.0.9"></a>
 ## [0.0.9](https://github.com/j-walker23/ng-right/compare/0.0.8...v0.0.9) (2015-09-25)
 
