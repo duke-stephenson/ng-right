@@ -1,3 +1,17 @@
+<a name="0.0.15"></a>
+## [0.0.15](https://github.com/j-walker23/ng-right/compare/0.0.14...v0.0.15) (2015-09-25)
+
+
+### Bug Fixes
+
+* **autoinject:** using typescript ([d3a4d47](https://github.com/j-walker23/ng-right/commit/d3a4d47))
+
+### Features
+
+* **release:** build release 0.0.15 ([cfe0865](https://github.com/j-walker23/ng-right/commit/cfe0865))
+
+
+
 <a name="0.0.14"></a>
 ## [0.0.14](https://github.com/j-walker23/ng-right/compare/0.0.13...v0.0.14) (2015-09-25)
 
