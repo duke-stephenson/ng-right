@@ -16,9 +16,7 @@ function inject(config: ngRight.InjectConfig) {
     return function(target: ngRight.ControllerClass) {
 
         target.$inject = target.$inject || [];
-
-        // Add new dependencies before existing ones
-        target.$inject.unshift.apply(target.$inject, deps);
+        target.$inject.push(...deps);
 
         return target;
     };
