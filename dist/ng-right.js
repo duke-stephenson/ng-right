@@ -55,6 +55,7 @@
 	__export(__webpack_require__(6));
 	__export(__webpack_require__(7));
 	var utils_1 = __webpack_require__(2);
+	exports.options = utils_1.options;
 	exports.autoinject = utils_1.autoinject;
 
 
