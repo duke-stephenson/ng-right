@@ -49,6 +49,6 @@
       "lib": "ts"
     },
     "main": "index",
-    "format": "es6"
+    "format": "cjs"
   }
 }
