@@ -47,7 +47,7 @@
   },
   "jspm": {
     "directories": {
-      "lib": "ts"
+      "lib": "lib"
     },
     "main": "index",
     "format": "cjs"
