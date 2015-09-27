@@ -12,7 +12,7 @@ git hf release start ${version}
 grunt bump-only:${type} &>/dev/null
 echo ""
 
-#grunt
+grunt
 
 git commit --all -m "feat(release): build release $version"
 
