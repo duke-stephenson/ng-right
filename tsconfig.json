@@ -29,6 +29,7 @@
         "ts/directives.ts",
         "ts/index.ts",
         "ts/inject.ts",
+        "ts/ng-right.d.ts",
         "ts/services.ts",
         "ts/state.ts",
         "ts/utils.ts",
