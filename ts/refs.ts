@@ -4,6 +4,7 @@
 /// <reference path="directives.ts" />
 /// <reference path="index.ts" />
 /// <reference path="inject.ts" />
+/// <reference path="ng-right.d.ts" />
 /// <reference path="services.ts" />
 /// <reference path="state.ts" />
 /// <reference path="utils.ts" />
