@@ -1,3 +1,14 @@
+<a name="0.0.18"></a>
+## [0.0.18](https://github.com/j-walker23/ng-right/compare/0.0.17...v0.0.18) (2015-09-29)
+
+
+### Features
+
+* **filter:** add ([0457417](https://github.com/j-walker23/ng-right/commit/0457417))
+* **release:** build release 0.0.18 ([6e90900](https://github.com/j-walker23/ng-right/commit/6e90900))
+
+
+
 <a name="0.0.17"></a>
 ## [0.0.17](https://github.com/j-walker23/ng-right/compare/0.0.16...v0.0.17) (2015-09-27)
 
