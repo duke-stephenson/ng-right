@@ -15,7 +15,7 @@ function service(conf: ngRight.ServiceConfig|string, type?: string) {
         config = conf;
     }
 
-    if (type === 'service' || type === 'controller' || type === 'filter') {
+    if (type === 'service' || type === 'controller' || type === 'filter' || type === 'factory') {
         utils.assert(!!config.name, 'you must provide a service name');
     }
 
@@ -48,8 +48,11 @@ function service(conf: ngRight.ServiceConfig|string, type?: string) {
         if (type === 'controller') {
             module.controller(config.name, constructor);
 
-        } else if (type === 'service') {
+        } else if (type === 'factory') {
             module.factory(config.name, () => constructor);
+
+        } else if (type === 'service') {
+            module.service(config.name, constructor);
 
         } else if (type === 'filter') {
             module.filter(config.name, () => {
@@ -96,6 +99,10 @@ export function Ambient(configOrClass: any) {
  */
 function AmbientBase(config: ngRight.BaseConfig) {
     return service(<ngRight.ServiceConfig>config);
+}
+
+export function Factory(config: ngRight.ServiceConfig) {
+    return service(config, 'factory');
 }
 
 /**

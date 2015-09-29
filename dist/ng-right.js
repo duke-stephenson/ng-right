@@ -368,7 +368,7 @@
 	    else {
 	        config = conf;
 	    }
-	    if (type === 'service' || type === 'controller' || type === 'filter') {
+	    if (type === 'service' || type === 'controller' || type === 'filter' || type === 'factory') {
 	        utils.assert(!!config.name, 'you must provide a service name');
 	    }
 	    return function (constructor) {
@@ -394,8 +394,11 @@
 	        if (type === 'controller') {
 	            module.controller(config.name, constructor);
 	        }
-	        else if (type === 'service') {
+	        else if (type === 'factory') {
 	            module.factory(config.name, function () { return constructor; });
+	        }
+	        else if (type === 'service') {
+	            module.service(config.name, constructor);
 	        }
 	        else if (type === 'filter') {
 	            module.filter(config.name, function () {
@@ -427,6 +430,10 @@
 	function AmbientBase(config) {
 	    return service(config);
 	}
+	function Factory(config) {
+	    return service(config, 'factory');
+	}
+	exports.Factory = Factory;
 	function Service(config) {
 	    return service(config, 'service');
 	}
