@@ -21,6 +21,7 @@ declare module 'ng-right' {
     var Ambient: typeof ngRight.Ambient;
     var Service: typeof ngRight.Service;
     var Controller: typeof ngRight.Controller;
+    var Factory: typeof ngRight.Factory;
 
     var autoinject: typeof ngRight.autoinject;
     var bindTwoWay: typeof ngRight.bindTwoWay;
@@ -49,6 +50,7 @@ declare module ngRight {
     function Ambient(target: Function): void;
     function Service(config: ServiceConfig): ClassDecorator;
     function Controller(config: ServiceConfig): ClassDecorator;
+    function Factory(config: ServiceConfig): ClassDecorator;
 
     // Property decorators.
     function autoinject(target: any, key: string): void;
