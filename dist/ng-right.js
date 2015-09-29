@@ -360,13 +360,16 @@
 
 	'use strict';
 	var utils = __webpack_require__(2);
-	function service(config, type) {
-	    utils.assert(config != null && typeof config === 'object', "expected a configuration object, got: " + config);
-	    if (type === 'service') {
-	        utils.assert(!!config.serviceName, 'you must provide a service name');
+	function service(conf, type) {
+	    var config;
+	    if (typeof conf === 'string') {
+	        config = { name: conf };
 	    }
-	    if (type === 'controller') {
-	        utils.assert(!!config.controllerName, 'you must provide a controller name');
+	    else {
+	        config = conf;
+	    }
+	    if (type === 'service' || type === 'controller' || type === 'filter') {
+	        utils.assert(!!config.name, 'you must provide a service name');
 	    }
 	    return function (constructor) {
 	        var module = utils.getModule();
@@ -389,19 +392,31 @@
 	        }
 	        module.run(injector);
 	        if (type === 'controller') {
-	            var conf = config;
-	            module.controller(conf.controllerName, constructor);
-	            if (conf.serviceName)
-	                module.factory(conf.serviceName, function () { return constructor; });
+	            module.controller(config.name, constructor);
 	        }
-	        if (type === 'service')
-	            module.factory(config.serviceName, function () { return constructor; });
+	        else if (type === 'service') {
+	            module.factory(config.name, function () { return constructor; });
+	        }
+	        else if (type === 'filter') {
+	            module.filter(config.name, function () {
+	                if (!constructor.transform) {
+	                    throw new Error('Filters must implement a transform method');
+	                }
+	                return function (input) {
+	                    var params = [];
+	                    for (var _i = 1; _i < arguments.length; _i++) {
+	                        params[_i - 1] = arguments[_i];
+	                    }
+	                    if (constructor.supports && !constructor.supports(input)) {
+	                        throw new Error("Filter " + name + " does not support " + input);
+	                    }
+	                    return (_a = constructor).transform.apply(_a, [input].concat(params));
+	                    var _a;
+	                };
+	            });
+	        }
 	    };
 	}
-	function Service(config) {
-	    return service(config, 'service');
-	}
-	exports.Service = Service;
 	function Ambient(configOrClass) {
 	    if (typeof configOrClass === 'function') {
 	        return AmbientBase({}).apply(null, arguments);
@@ -412,10 +427,18 @@
 	function AmbientBase(config) {
 	    return service(config);
 	}
+	function Service(config) {
+	    return service(config, 'service');
+	}
+	exports.Service = Service;
 	function Controller(config) {
 	    return service(config, 'controller');
 	}
 	exports.Controller = Controller;
+	function Filter(config) {
+	    return service(config, 'filter');
+	}
+	exports.Filter = Filter;
 
 
 /***/ },
