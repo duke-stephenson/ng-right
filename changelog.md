@@ -1,3 +1,14 @@
+<a name="0.0.19"></a>
+## [0.0.19](https://github.com/j-walker23/ng-right/compare/0.0.18...v0.0.19) (2015-09-29)
+
+
+### Features
+
+* **factory:** diff service ([f49df72](https://github.com/j-walker23/ng-right/commit/f49df72))
+* **release:** build release 0.0.19 ([416e3e5](https://github.com/j-walker23/ng-right/commit/416e3e5))
+
+
+
 <a name="0.0.18"></a>
 ## [0.0.18](https://github.com/j-walker23/ng-right/compare/0.0.17...v0.0.18) (2015-09-29)
 
