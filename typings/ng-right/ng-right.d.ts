@@ -4,16 +4,23 @@
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 
 
+/// <reference path="../angularjs/angular.d.ts" />
+
+
 declare module 'ng-right' {
-    var Attribute: typeof ngRight.Attribute;
-    var Ambient: typeof ngRight.Ambient;
+
     var Bootstrap: typeof ngRight.Bootstrap;
-    var Component: typeof ngRight.Component;
-    var Controller: typeof ngRight.Controller;
     var Inject: typeof ngRight.Inject;
-    var Service: typeof ngRight.Service;
     var State: typeof ngRight.State;
+    var Filter: typeof ngRight.Filter;
+
+    var Attribute: typeof ngRight.Attribute;
+    var Component: typeof ngRight.Component;
     var View: typeof ngRight.View;
+
+    var Ambient: typeof ngRight.Ambient;
+    var Service: typeof ngRight.Service;
+    var Controller: typeof ngRight.Controller;
 
     var autoinject: typeof ngRight.autoinject;
     var bindTwoWay: typeof ngRight.bindTwoWay;
@@ -29,17 +36,19 @@ declare module 'ng-right' {
 
 declare module ngRight {
 
-    // Class decorators.
+    function Bootstrap(config: OptionsConfig): ClassDecorator;
+    function Inject(...deps: string[]): ClassDecorator;
+    function State(config: StateConfig): ClassDecorator;
+    function Filter(config: ServiceConfig): ClassDecorator;
+
     function Attribute(config: DirectiveConfig): ClassDecorator;
+    function Component(config: DirectiveConfig): ClassDecorator;
+    function View(config: ViewConfig): ClassDecorator;
+
     function Ambient(config: BaseConfig): ClassDecorator;
     function Ambient(target: Function): void;
-    function Bootstrap(config: OptionsConfig): ClassDecorator;
-    function Component(config: DirectiveConfig): ClassDecorator;
-    function Controller(config: ControllerConfig): ClassDecorator;
-    function Inject(...deps: string[]): ClassDecorator;
     function Service(config: ServiceConfig): ClassDecorator;
-    function State(config: StateConfig): ClassDecorator;
-    function View(config: ViewConfig): ClassDecorator;
+    function Controller(config: ServiceConfig): ClassDecorator;
 
     // Property decorators.
     function autoinject(target: any, key: string): void;
@@ -73,15 +82,7 @@ declare module ngRight {
     interface ServiceConfig extends BaseConfig {
         // The name of the service in the angular module system. Mandatory
         // due to minification woes.
-        serviceName: string;
-    }
-
-    interface ControllerConfig extends BaseConfig {
-        // Mandatory controller name.
-        controllerName: string;
-        // Optional service name. If included, the controller is published to
-        // angular's DI as a service under this name.
-        serviceName?: string;
+        name: string;
     }
 
     interface InjectConfig {

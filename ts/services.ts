@@ -6,15 +6,17 @@
 import * as utils from './utils';
 
 
-function service(config: ngRight.ServiceConfig|ngRight.ControllerConfig, type?: string) {
+function service(conf: ngRight.ServiceConfig|string, type?: string) {
 
-    utils.assert(config != null && typeof config === 'object', `expected a configuration object, got: ${config}`);
-
-    if (type === 'service') {
-        utils.assert(!!config.serviceName, 'you must provide a service name');
+    let config: ngRight.ServiceConfig;
+    if (typeof conf === 'string') {
+        config = {name: conf};
+    } else {
+        config = conf;
     }
-    if (type === 'controller') {
-        utils.assert(!!(<ngRight.ControllerConfig>config).controllerName, 'you must provide a controller name');
+
+    if (type === 'service' || type === 'controller' || type === 'filter') {
+        utils.assert(!!config.name, 'you must provide a service name');
     }
 
     return function(constructor: Function) {
@@ -44,20 +46,35 @@ function service(config: ngRight.ServiceConfig|ngRight.ControllerConfig, type?: 
 
         // Publish service and/or controller.
         if (type === 'controller') {
-            let conf = <ngRight.ControllerConfig>config;
-            module.controller(conf.controllerName, constructor);
-            if (conf.serviceName) module.factory(conf.serviceName, () => constructor);
+            module.controller(config.name, constructor);
+
+        } else if (type === 'service') {
+            module.factory(config.name, () => constructor);
+
+        } else if (type === 'filter') {
+            module.filter(config.name, () => {
+                // All pipes must implement a `transform` method. These __must__ be pure
+                // functions (for some input, it must always return the same output)
+                if(!(<any>constructor).transform){
+                    throw new Error('Filters must implement a transform method');
+                }
+
+                // This is the Angular 1 filter itself
+                return (input, ...params) => {
+                    // Pass the input to the pipe to see if it conforms to the pipe's type
+                    // spec
+                    if((<any>constructor).supports && !(<any>constructor).supports(input)){
+                        throw new Error(`Filter ${name} does not support ${input}`);
+                    }
+
+                    // Pass all inputs and parameters to the filter returning the output
+                    return (<any>constructor).transform(input, ...params);
+                }
+            })
         }
-        if (type === 'service') module.factory(config.serviceName, () => constructor);
     };
 }
 
-/**
- * Defines a generic angular service.
- */
-export function Service(config: ngRight.ServiceConfig) {
-    return service(config, 'service');
-}
 
 /**
  * Polymorphic version of Ambient. Example:
@@ -82,11 +99,21 @@ function AmbientBase(config: ngRight.BaseConfig) {
 }
 
 /**
+ * Defines a generic angular service.
+ */
+export function Service(config: ngRight.ServiceConfig) {
+    return service(config, 'service');
+}
+
+/**
  * Old-school controller. Gets injected with DI, then published as
  * module.controller under the given name. Can also optionally be published as
  * a service.
  */
-export function Controller(config: ngRight.ControllerConfig) {
+export function Controller(config: ngRight.ServiceConfig) {
     return service(config, 'controller');
 }
 
+export function Filter(config: ngRight.ServiceConfig) {
+    return service(config, 'filter');
+}
