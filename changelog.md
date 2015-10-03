@@ -1,3 +1,17 @@
+<a name="0.1.0"></a>
+# [0.1.0](https://github.com/j-walker23/ng-right/compare/0.0.19...v0.1.0) (2015-10-03)
+
+
+### Bug Fixes
+
+* **package:** set angular deps ([0015859](https://github.com/j-walker23/ng-right/commit/0015859))
+
+### Features
+
+* **release:** build release 0.1.0 ([dc8903e](https://github.com/j-walker23/ng-right/commit/dc8903e))
+
+
+
 <a name="0.0.19"></a>
 ## [0.0.19](https://github.com/j-walker23/ng-right/compare/0.0.18...v0.0.19) (2015-09-29)
 
