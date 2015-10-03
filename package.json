@@ -1,6 +1,6 @@
 {
   "name": "ng-right",
-  "version": "0.0.19",
+  "version": "0.1.0",
   "description": "Angular 2 component syntax for Angular 1 apps",
   "author": "John Walker",
   "license": "MIT",
@@ -41,11 +41,17 @@
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.11.0"
   },
+  "dependencies": {
+    "angular": "1.4.6"
+  },
   "typings": "typings/ng-right/ng-right.d.ts",
   "typescript": {
     "definition": "typings/ng-right/ng-right.d.ts"
   },
   "jspm": {
+    "dependencies": {
+      "angular": "1.4.6"
+    },
     "directories": {
       "lib": "lib"
     },
