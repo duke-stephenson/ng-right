@@ -2,7 +2,7 @@
 language: node_js
 
 node_js:
-  - 0.12.4
+  - 3.3.4
 
 cache:
   directories:
@@ -19,3 +19,6 @@ install:
 
 script:
 - grunt
+
+deploy:
+- npm publish

@@ -9,5 +9,3 @@ script="grunt conventionalChangelog"
 
 git hf build npm -t "$type" -s "$script" -m "$msg"
 
-grunt
-npm publish
