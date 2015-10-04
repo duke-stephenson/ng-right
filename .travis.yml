@@ -12,7 +12,7 @@ branches:
   only:
   - master
 
-before_script: "./ci.sh install"
+install: "./ci.sh install"
 before_deploy: "./ci.sh before_deploy"
 
 deploy:

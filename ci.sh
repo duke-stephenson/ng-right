@@ -4,6 +4,7 @@ set -e
 
 cmd_install () {
     npm install -g grunt grunt-cli
+    npm install --save-dev
 }
 
 cmd_before_deploy () {
