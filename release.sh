@@ -2,8 +2,8 @@
 
 set -e
 
-msg=$1
-type=$2
+msg=${1:-"release package"}
+type=${2:-"patch"}
 
 script="grunt conventionalChangelog"
 
