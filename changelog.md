@@ -1,3 +1,13 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/j-walker23/ng-right/compare/0.1.1...v0.2.0) (2015-10-04)
+
+
+### Features
+
+* **0.2.0:** Fuck this shit ([6a256ba](https://github.com/j-walker23/ng-right/commit/6a256ba))
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/j-walker23/ng-right/compare/0.1.0...v0.1.1) (2015-10-04)
 
