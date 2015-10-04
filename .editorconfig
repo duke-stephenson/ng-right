@@ -11,5 +11,5 @@ insert_final_newline = true # doesn't work yet
 [*.md]
 trim_trailing_whitespace = false
 
-[*{.coffee,.json}]
+[*{.coffee,.json,.yml,.yaml}]
 indent_size = 2
