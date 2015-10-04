@@ -31,16 +31,6 @@ module.exports = (grunt) ->
         src: 'typings/ng-right/ng-right.d.ts'
         dest: 'lib/ng-right.d.ts'
 
-    bump:
-      options:
-        files: ['package.json']
-        commit: true
-        commitFiles: ['package.json']
-        gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d'
-        createTag: false
-        push: false
-        commitMessage: '%VERSION% bump'
-
     webpack:
       dist:
         entry: './lib/index.js'
@@ -70,4 +60,4 @@ module.exports = (grunt) ->
   grunt.initConfig grunt.util._.extend tasks, paths
 
   grunt.registerTask 'build', ['clean:build', 'ts:build']
-  grunt.registerTask 'default', ['clean:build', 'ts:build', 'clean:dist', 'webpack', 'copy:build']
+  grunt.registerTask 'default', ['build', 'copy:build', 'clean:dist']
