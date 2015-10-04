@@ -8,7 +8,6 @@
     "type": "git",
     "url": "git://github.com/j-walker23/ng-right.git"
   },
-  "main": "dist/ng-right",
   "keywords": [
     "angular",
     "angular1",
@@ -17,13 +16,9 @@
     "decorators",
     "babel"
   ],
+  "main": "lib/index",
   "files": [
-    "LICENSE",
-    "changelog.md",
-    "typings/",
-    "dist/",
-    "lib/",
-    "ts/"
+    "lib/"
   ],
   "devDependencies": {
     "angular": "^1.4.6",
@@ -41,16 +36,14 @@
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.11.0"
   },
-  "dependencies": {
-    "angular": "1.4.6"
-  },
-  "typings": "typings/ng-right/ng-right.d.ts",
+  "typings": "ng-right.d.ts",
   "typescript": {
-    "definition": "typings/ng-right/ng-right.d.ts"
+    "definition": "ng-right.d.ts"
   },
   "jspm": {
+    "registry": "github",
     "dependencies": {
-      "angular": "1.4.6"
+      "angular": "angular/bower-angular@^1.4.6"
     },
     "directories": {
       "lib": "lib"
