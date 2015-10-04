@@ -11,4 +11,3 @@ typings/**/*.ts
 .tscache/
 node_modules/
 lib/
-./gruntfile.coffee
