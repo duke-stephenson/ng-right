@@ -1,6 +1,6 @@
 {
   "name": "ng-right",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Angular 2 component syntax for Angular 1 apps",
   "author": "John Walker",
   "license": "MIT",
@@ -10,11 +10,8 @@
   },
   "keywords": [
     "angular",
-    "angular1",
-    "angular2",
     "annotations",
-    "decorators",
-    "babel"
+    "decorators"
   ],
   "format": "cjs",
   "main": "lib/index",
