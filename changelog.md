@@ -1,3 +1,13 @@
+<a name="0.2.10"></a>
+## [0.2.10](https://github.com/j-walker23/ng-right/compare/0.2.9...v0.2.10) (2015-10-05)
+
+
+### Features
+
+* **0.2.10:** release package ([72fdf22](https://github.com/j-walker23/ng-right/commit/72fdf22))
+
+
+
 <a name="0.2.9"></a>
 ## [0.2.9](https://github.com/j-walker23/ng-right/compare/0.2.8...v0.2.9) (2015-10-05)
 
