@@ -21,6 +21,9 @@
   "files": [
     "lib/"
   ],
+  "scripts": {
+    "test": "echo 'Write Tests'"
+  },
   "peerDependencies": {
     "angular": "^1.4.6",
     "typescript": "^1.6.2"
