@@ -4,7 +4,9 @@
  */
 
 
-/// <reference path="./typings/tsd.d.ts" />
+/// <reference path="./typings/ng-right/ng-right.d.ts" />
+/// <reference path="./typings/angularjs/angular.d.ts" />
+
 
 
 import {Attribute, Ambient, Bootstrap, Controller} from 'ng-right';
@@ -16,20 +18,11 @@ let app = angular.module('app', ['ng']);
 
 
 
-@Component({
-    selector: 'web-app'
-})
-@View({
-    template: '<content></content>'
-})
+@Controller('App')
 @Bootstrap({
     module: app
 })
 class WebApp {
-
-    constructor() {
-        console.log('this', this);
-    }
 }
 
 var a = new WebApp();
@@ -57,23 +50,17 @@ class AttrTest {
 
 }
 
-@Service({
-    serviceName: 'name'
-})
+@Service('name')
 class ServiceTest {
 
 }
 
-@Controller({
-    controllerName: 'name'
-})
+@Controller('name')
 class CtrlName {
 
 }
 
-@Ambient({
-
-})
+@Ambient
 class Amb {
 
 }
