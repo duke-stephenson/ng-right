@@ -3,6 +3,7 @@
 set -e
 
 cmd_install () {
+    npm install -g npm
     npm install -g grunt grunt-cli
     npm install --save-dev
     npm install -g tsd
