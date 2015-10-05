@@ -13,6 +13,7 @@ branches:
   - master
 
 install: "./ci.sh install"
+script: "./ci.sh script"
 before_deploy: "./ci.sh before_deploy"
 
 deploy:

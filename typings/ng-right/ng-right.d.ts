@@ -48,9 +48,9 @@ declare module ngRight {
 
     function Ambient(config: BaseConfig): ClassDecorator;
     function Ambient(target: Function): void;
-    function Service(config: ServiceConfig): ClassDecorator;
-    function Controller(config: ServiceConfig): ClassDecorator;
-    function Factory(config: ServiceConfig): ClassDecorator;
+    function Service(config: ServiceConfig|string): ClassDecorator;
+    function Controller(config: ServiceConfig|string): ClassDecorator;
+    function Factory(config: ServiceConfig|string): ClassDecorator;
 
     // Property decorators.
     function autoinject(target: any, key: string): void;
