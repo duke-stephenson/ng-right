@@ -18,7 +18,7 @@ cmd_release () {
     git hf build npm -t "$type" -s "$script" -m "$msg"
 }
 
-cmd="$1"
+cmd="${1:-release}"
 echo "Run cmd $cmd"
 
 case "$cmd" in
