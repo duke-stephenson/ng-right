@@ -23,9 +23,8 @@ function service(conf: ngRight.ServiceConfig|string, type?: string) {
 
         var module = utils.getModule();
 
-        var fromInjectClassDecor = constructor.$inject || [];
-        var inject               = (constructor.prototype[utils.autoinjectKey] || []).concat(fromInjectClassDecor);
-        var injectStatic         = constructor[utils.autoinjectKey] || [];
+        var inject = constructor.prototype[utils.autoinjectKey] || [];
+        var injectStatic = constructor[utils.autoinjectKey] || [];
 
         // Injector function that assigns the injected services to the class.
         injector.$inject = inject.concat(injectStatic);
@@ -58,7 +57,7 @@ function service(conf: ngRight.ServiceConfig|string, type?: string) {
             module.filter(config.name, () => {
                 // All pipes must implement a `transform` method. These __must__ be pure
                 // functions (for some input, it must always return the same output)
-                if(!(<any>constructor).transform){
+                if (!(<any>constructor).transform) {
                     throw new Error('Filters must implement a transform method');
                 }
 
@@ -66,7 +65,7 @@ function service(conf: ngRight.ServiceConfig|string, type?: string) {
                 return (input, ...params) => {
                     // Pass the input to the pipe to see if it conforms to the pipe's type
                     // spec
-                    if((<any>constructor).supports && !(<any>constructor).supports(input)){
+                    if ((<any>constructor).supports && !(<any>constructor).supports(input)) {
                         throw new Error(`Filter ${name} does not support ${input}`);
                     }
 
@@ -121,6 +120,6 @@ export function Controller(config: ngRight.ServiceConfig) {
     return service(config, 'controller');
 }
 
-export function Filter(config: ngRight.ServiceConfig) {
+export function Pipe(config: ngRight.ServiceConfig) {
     return service(config, 'filter');
 }
