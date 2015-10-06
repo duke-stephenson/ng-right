@@ -15,7 +15,8 @@ export let options = {
     // 'components/elementName/elementName.html'.
     makeTemplateUrl(elementName: string): string {
         return `${elementName}/${elementName}.tpl.html`;
-    }
+    },
+    controllerAs: <string> null
 };
 
 /**
@@ -27,7 +28,7 @@ export function getModule(): angular.IModule {
 }
 
 export function getCtrlAs(config: ngRight.DirectiveConfig) {
-    return config.controllerAs || camelCase(config.selector);
+    return config.controllerAs || options.controllerAs || camelCase(config.selector);
 }
 
 export function setOptions(opts: ngRight.OptionsConfig) {

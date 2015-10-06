@@ -32,6 +32,7 @@ declare module 'ng-right' {
     let options: {
         module: angular.IModule;
         makeTemplateUrl: (name: string) => string;
+        controllerAs: string;
     };
 }
 
@@ -85,10 +86,6 @@ declare module ngRight {
         // The name of the service in the angular module system. Mandatory
         // due to minification woes.
         name: string;
-    }
-
-    interface InjectConfig {
-        deps: string[];
     }
 
     interface ControllerClass extends Function {
