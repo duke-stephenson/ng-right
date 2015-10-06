@@ -8,7 +8,7 @@ import * as utils from './utils';
 import {mapConstructor} from './common/injectors';
 import ui = angular.ui;
 
-function state(options: ngRight.StateConfig) {
+function state(config: ngRight.StateConfig) {
 
     return function(constructor: ngRight.StateClass) {
 
@@ -21,11 +21,11 @@ function state(options: ngRight.StateConfig) {
             resolve,
             defaultRoute = false,
             template = constructor.template,
-            templateUrl = constructor.templateUrl} = options;
+            templateUrl = constructor.templateUrl} = config;
 
         name = utils.camelCase(name);
 
-        // Values to resolve can either be supplied in options.resolve or as a static method on the
+        // Values to resolve can either be supplied in config.resolve or as a static method on the
         // component's class
         let doResolve = false;
         if (resolve && (deps = Object.keys(resolve))) {
@@ -36,65 +36,27 @@ function state(options: ngRight.StateConfig) {
 
         module.run(injector);
 
-        options.template = template;
-        options.templateUrl = templateUrl;
-//        options.controllerAs = options.controllerAs ||
-
-
-
-        config.$inject = ['$urlRouterProvider', '$stateProvider'];
-        function config($urlRouterProvider: ui.IUrlRouterProvider, $stateProvider: ui.IStateProvider) {
-
-            if (defaultRoute && options.url === 'string')
-                $urlRouterProvider.otherwise((typeof defaultRoute === 'string') ? defaultRoute : options.url);
-
-            $stateProvider.state(options);
+        if (deps) {
+            constructor.$inject = deps;
         }
 
-        module.config(config);
+        config.controller = <Function>constructor;
 
-        module.config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
-            function($urlRouterProvider, $stateProvider, $locationProvider) {
+        config.template = template;
+        config.templateUrl = templateUrl;
+        config.controllerAs = config.controllerAs || utils.options.controllerAs || name;
 
 
-                // This is the state definition object
-                var sdo = {
+        setup.$inject = ['$urlRouterProvider', '$stateProvider'];
+        function setup($urlRouterProvider: ui.IUrlRouterProvider, $stateProvider: ui.IStateProvider) {
 
-                    // A user supplied controller OR
-                    // An internally created proxy controller, if resolve were requested for a Component.
-                    controller: userController || (doResolve ? controller : undefined),
+            if (defaultRoute && config.url === 'string')
+                $urlRouterProvider.otherwise((typeof defaultRoute === 'string') ? defaultRoute : config.url);
 
-                };
+            $stateProvider.state(config);
+        }
 
-                // When our automatic controller is used, we inject the resolved values into it,
-                // along with the injectable service that will be used to publish them.
-                // If the user supplied a controller than we do not inject anything
-                if (doResolve) {
-                    deps.unshift(name);
-
-                    controller.$inject = deps;
-                }
-
-                // Populate the published service with the resolved values
-                function controller() {
-                    var args = Array.prototype.slice.call(arguments);
-
-                    // This is the service that we "un-shifted" earlier
-                    var localScope = args[0];
-
-                    args = args.slice(1);
-
-                    // Now we copy the resolved values to the service.
-                    // This service can be injected into a component's constructor, for example.
-                    deps.slice(1).forEach(function(v, i) {
-                        localScope[v] = args[i];
-                    });
-
-                }
-
-            }]);
-
-        return constructor;
+        module.config(setup);
 
     };
 }
