@@ -19,6 +19,8 @@ export let options = {
     controllerAs: <string> null
 };
 
+export const app = options.module;
+
 /**
  * Reuses or creates an angular module from the given configuration.
  */
