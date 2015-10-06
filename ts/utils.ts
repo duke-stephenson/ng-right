@@ -19,13 +19,14 @@ export let options = {
     controllerAs: <string> null
 };
 
-export const app = options.module;
+export let app = options.module;
 
 /**
  * Reuses or creates an angular module from the given configuration.
  */
 export function getModule(): angular.IModule {
     assert(!!options.module, 'angular module must bet set');
+    app = options.module;
     return options.module;
 }
 
@@ -34,6 +35,7 @@ export function getCtrlAs(config: ngRight.DirectiveConfig) {
 }
 
 export function setOptions(opts: ngRight.OptionsConfig) {
+    app = opts.module;
     angular.extend(options, opts);
 }
 
