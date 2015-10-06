@@ -4,122 +4,73 @@
  */
 
 
-///ts:ref=refs
-/// No file or directory matched name "refs" ///ts:ref:generated
-
 import * as utils from './utils';
-
+import {mapConstructor} from './common/injectors';
+import ui = angular.ui;
 
 function state(options: ngRight.StateConfig) {
 
-    return function(target: ngRight.StateClass) {
+    return function(constructor: ngRight.StateClass) {
 
-        var module              = utils.getModule();
-        var resolvedServiceName = utils.camelCase(target.selector || (options.name + '').replace('.', '-'));
+        var module = utils.getModule();
 
-        var deps;
+        let deps: string[];
 
-        // Indicates if there is anything to resolve
-        var doResolve;
+        let {
+            name,
+            resolve,
+            defaultRoute = false,
+            template = constructor.template,
+            templateUrl = constructor.templateUrl} = options;
+
+        name = utils.camelCase(name);
 
         // Values to resolve can either be supplied in options.resolve or as a static method on the
         // component's class
-        var resolves = options.resolve || target.resolve;
-
-        // Is there a resolve block?
-        if (resolves && resolves instanceof Object && (deps = Object.keys(resolves)).length)
+        let doResolve = false;
+        if (resolve && (deps = Object.keys(resolve))) {
             doResolve = true;
+        }
 
-        // Create an injectable value service to share the resolved values with the controller
-        // The service bears the same name as the component's camelCased selector name.
-        // if (doResolve) {
-        //    if (!serviceExists(resolvedServiceName)) {
-        //        angular.module(currentModule).value(resolvedServiceName, {});
-        //    }
-        // }
+        let injector = mapConstructor(<Function>constructor);
 
-        // Configure the state
+        module.run(injector);
+
+        options.template = template;
+        options.templateUrl = templateUrl;
+//        options.controllerAs = options.controllerAs ||
+
+
+
+        config.$inject = ['$urlRouterProvider', '$stateProvider'];
+        function config($urlRouterProvider: ui.IUrlRouterProvider, $stateProvider: ui.IStateProvider) {
+
+            if (defaultRoute && options.url === 'string')
+                $urlRouterProvider.otherwise((typeof defaultRoute === 'string') ? defaultRoute : options.url);
+
+            $stateProvider.state(options);
+        }
+
+        module.config(config);
 
         module.config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
             function($urlRouterProvider, $stateProvider, $locationProvider) {
 
-                // Activate this state, if options.defaultRoute = true.
-                // If you don't want this then don't set options.defaultRoute to true
-                // and, instead, use $state.go inside the constructor to active a state.
-                // You can also pass a string to defaultRoute, which will become the default route.
-                if (options.defaultRoute)
-                    $urlRouterProvider.otherwise((typeof options.defaultRoute === 'string') ? options.defaultRoute : options.url);
-
-                if (options.html5Mode) {
-                    $locationProvider.html5Mode(options.html5Mode);
-                }
-
-                // The user can supply a controller through a parameter in options
-                // or the class itself can be used as the controller if no component is annotated.
-                let userController: any;
-                if (options.controller) {
-                    userController = <string>options.controller;
-
-                } else if (!target.selector) {
-                    if (target.$inject && target.$inject.length && deps && deps.length) {
-
-                        userController = <ngRight.StateClass>target;
-                        deps.forEach(function(dep) {
-                            var i = userController.$inject.indexOf(dep);
-                            if (i !== -1)
-                                userController.$inject[i] = dep;
-                        });
-
-                    }
-                }
-
 
                 // This is the state definition object
                 var sdo = {
-                    url: options.url,
-
-                    // Default values for URL parameters can be configured here.
-                    // ALso, parameters that do not appear in the URL can be configured here.
-                    params: options.params,
-
-                    // The State applied to a bootstrap component can be abstract,
-                    // if you don't want that state to be able to activate.
-                    abstract: options.abstract,
-
-                    templateUrl: options.templateUrl,
-
-                    // This is the "inline" template, as opposed to the templateUrl.
-                    // 1) If options.templateUrl is specified then template will be set to undefined.
-                    // 2) If options.template is provided then it will be used.
-                    // 3) Otherwise, if this is a component, but not the bootstrap(**) component,
-                    //    then we use it's selector to create the inline template "<selector></selector>".
-                    // 4) Otherwise, we provide the following default template "<div ui-view></div>".
-                    // (**) The bootstrap component will be rendered by Angular directly and must not
-                    //     be rendered again by ui-router, or you will literally see it twice.
-                    // todo: allow the user to specify their own div/span instead of forcing "div(ui-view)"
-                    template: options.templateUrl ? undefined : options.template || ((target.template || target.templateUrl) && !target.bootstrap && target.selector ? target.selector.replace(/^(.*)$/, '<$1></$1>') : '<div ui-view=""></div>'),
-
-                    // Do we need to resolve stuff? If so, then we also provide a controller to catch the resolved data.
-                    resolve: resolves,
 
                     // A user supplied controller OR
-                    // An internally created proxy controller, if resolves were requested for a Component.
+                    // An internally created proxy controller, if resolve were requested for a Component.
                     controller: userController || (doResolve ? controller : undefined),
 
-                    // onEnter and onExit events
-                    onEnter: options.onEnter,
-                    onExit: options.onExit
                 };
-
-
-                // Create the state
-                $stateProvider.state(options.name, sdo);
 
                 // When our automatic controller is used, we inject the resolved values into it,
                 // along with the injectable service that will be used to publish them.
                 // If the user supplied a controller than we do not inject anything
                 if (doResolve) {
-                    deps.unshift(resolvedServiceName);
+                    deps.unshift(name);
 
                     controller.$inject = deps;
                 }
@@ -143,7 +94,7 @@ function state(options: ngRight.StateConfig) {
 
             }]);
 
-        return target;
+        return constructor;
 
     };
 }
