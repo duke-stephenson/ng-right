@@ -1,41 +1,44 @@
 {
-    "version": "1.6.2",
-    "compilerOptions": {
-        "noImplicitAny": false,
-        "failOnTypeErrors": true,
-        "experimentalDecorators": true,
-        "module": "commonjs",
-        "target": "es5",
-        "rootDir": ".",
-        "fast": "never",
-        "outDir": "lib",
-        "sourceMap": false,
-        "noExternalResolve": true
-    },
-    "exclude": [
-        "node_modules",
-        "lib",
-        "ng-right-tests.ts"
-    ],
-    "filesGlob": [
-        "./ts/**/*.ts",
-        "./typings/**/*.ts",
-        "!**/*baseDir*",
-        "!ts/refs.ts"
-    ],
-    "files": [
-        "ts/bindings.ts",
-        "ts/bootstrap.ts",
-        "ts/directives.ts",
-        "ts/index.ts",
-        "ts/inject.ts",
-        "ts/services.ts",
-        "ts/state.ts",
-        "ts/utils.ts",
-        "typings/angular-ui-router/angular-ui-router.d.ts",
-        "typings/angularjs/angular.d.ts",
-        "typings/jquery/jquery.d.ts",
-        "typings/ng-right/ng-right.d.ts",
-        "typings/tsd.d.ts"
-    ]
+  "version": "1.6.2",
+  "compilerOptions": {
+    "declaration": true,
+    "moduleResolution": "node",
+    "isolatedModules": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "noImplicitAny": true,
+    "failOnTypeErrors": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "target": "es5",
+    "rootDir": ".",
+    "outDir": "lib",
+    "sourceMap": false,
+    "noExternalResolve": true
+  },
+  "exclude": [
+    "node_modules",
+    "lib",
+    "ng-right-tests.ts"
+  ],
+  "filesGlob": [
+    "./ts/**/*.ts",
+    "./typings/**/*.ts"
+  ],
+  "files": [
+    "ts/bindings.ts",
+    "ts/bootstrap.ts",
+    "ts/common/injectors.ts",
+    "ts/directives.ts",
+    "ts/index.ts",
+    "ts/services.ts",
+    "ts/state.ts",
+    "ts/utils.ts",
+    "typings/angular-ui-router/angular-ui-router.d.ts",
+    "typings/angularjs/angular.d.ts",
+    "typings/jquery/jquery.d.ts",
+    "typings/ng-right/ng-right.d.ts",
+    "typings/tsd.d.ts"
+  ]
 }

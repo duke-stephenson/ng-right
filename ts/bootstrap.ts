@@ -3,8 +3,6 @@
  * @version 9/21/15 1:31 AM
  */
 
-///ts:ref=refs
-/// No file or directory matched name "refs" ///ts:ref:generated
 
 import * as utils from './utils';
 

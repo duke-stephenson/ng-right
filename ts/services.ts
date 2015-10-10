@@ -1,7 +1,5 @@
 'use strict';
 
-///ts:ref=refs
-/// No file or directory matched name "refs" ///ts:ref:generated
 
 import * as utils from './utils';
 
