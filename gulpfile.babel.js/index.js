@@ -36,11 +36,16 @@ gulp.task('ts', () => {
 gulp.task('dts', () => {
 
     return dts.bundle({
-        externals: true,
+        //externals: true,
         name: 'ng-right',
         main: 'lib/index.d.ts'
     });
 
 });
 
+gulp.task('run', () => {
+    gulp.watch('ts/**/*.ts', gulp.series('ts'));
+});
+
 gulp.task('default', gulp.series('rm', 'ts', 'dts'));
+

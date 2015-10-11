@@ -12,38 +12,25 @@ function state(config: ngRight.StateConfig) {
 
     return function(constructor: ngRight.StateClass) {
 
-        var module = utils.getModule();
-
-        let deps: string[];
-
         let {
-            name,
-            resolve,
-            defaultRoute = false,
-            template = constructor.template,
-            templateUrl = constructor.templateUrl} = config;
+                resolve,
+                defaultRoute = false,
+                template = constructor.template,
+                templateUrl = constructor.templateUrl} = config;
 
-        name = utils.camelCase(name);
-
-        // Values to resolve can either be supplied in config.resolve or as a static method on the
-        // component's class
-        let doResolve = false;
-        if (resolve && (deps = Object.keys(resolve))) {
-            doResolve = true;
-        }
-
+        let module   = utils.getModule();
+        let name     = utils.camelCase(config.name);
         let injector = mapConstructor(<Function>constructor);
 
-        module.run(injector);
+        module.run(<any[]>injector);
 
-        if (deps) {
-            constructor.$inject = deps;
+        if (resolve) {
+            constructor.$inject = Object.keys(resolve)
         }
 
-        config.controller = <Function>constructor;
-
-        config.template = template;
-        config.templateUrl = templateUrl;
+        config.controller   = <Function>constructor;
+        config.template     = template;
+        config.templateUrl  = templateUrl;
         config.controllerAs = config.controllerAs || utils.options.controllerAs || name;
 
 
@@ -51,7 +38,7 @@ function state(config: ngRight.StateConfig) {
         function setup($urlRouterProvider: ui.IUrlRouterProvider, $stateProvider: ui.IStateProvider) {
 
             if (defaultRoute && config.url === 'string')
-                $urlRouterProvider.otherwise((typeof defaultRoute === 'string') ? defaultRoute : config.url);
+                $urlRouterProvider.otherwise((typeof defaultRoute === 'string') ? defaultRoute : <string>config.url);
 
             $stateProvider.state(config);
         }
@@ -60,7 +47,6 @@ function state(config: ngRight.StateConfig) {
 
     };
 }
-
 
 /**
  * State can be used to annotate either a Component or a class and assign

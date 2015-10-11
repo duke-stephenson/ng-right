@@ -83,7 +83,7 @@ export function kebabCase(name: string): string {
  */
 export function camelCase(name: string): string {
     name = normalise(name);
-    return name.replace(/ (.)/g, (m, p1: string) => p1.toUpperCase());
+    return name.replace(/ (.)/g, (m:any, p1: string) => p1.toUpperCase());
 }
 
 /**
@@ -102,7 +102,7 @@ export function zipObject<T>(one: string[], other: T[]): {[key: string]: T} {
  * Doesn't preserve arity ('.length') and argument names.
  */
 export function cloneFunction(func: Function) {
-    return function(...args) {
+    return function(...args: any[]) {
         return func.call(this, ...args);
     };
 }

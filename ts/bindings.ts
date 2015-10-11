@@ -189,7 +189,7 @@ function bindOneWayBase(key: string = '') {
 /**
  * Generates a descriptor string suffix from the given options.
  */
-function encodeDescriptor(options): string {
+function encodeDescriptor(options: ngRight.BindTwoWayOptions): string {
     return (options.collection ? '*' : '') + (options.optional ? '?' : '') + (options.key || '');
 }
 

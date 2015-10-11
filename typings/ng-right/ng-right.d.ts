@@ -31,7 +31,6 @@ declare module 'ng-right' {
         makeTemplateUrl: (name: string) => string;
         controllerAs: string;
     };
-    const app = options.module;
 }
 
 declare module ngRight {

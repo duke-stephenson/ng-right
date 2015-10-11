@@ -5,13 +5,13 @@
 
 import * as utils from '../utils';
 
-export function mapConstructor(constructor: Function): Function {
+export function mapConstructor(constructor: Function, config?: any): Function|any[] {
 
-    var inject = constructor.prototype[utils.autoinjectKey] || [];
-    var injectStatic = constructor[utils.autoinjectKey] || [];
+    var inject: string[] = constructor.prototype[utils.autoinjectKey] || [];
+    var injectStatic: string[] = constructor[utils.autoinjectKey] || [];
 
     injector.$inject = inject.concat(injectStatic);
-    function injector(...injected) {
+    function injector(...injected: string[]) {
         var map = utils.zipObject(injector.$inject, injected);
         // Assign injected values to the prototype.
         inject.forEach(token => {
@@ -21,6 +21,9 @@ export function mapConstructor(constructor: Function): Function {
         injectStatic.forEach(token => {
             constructor[token] = map[token];
         });
+
+        if (config)
+            return config;
     }
 
     return injector;

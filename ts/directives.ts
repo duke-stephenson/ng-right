@@ -2,6 +2,7 @@
 
 
 import * as utils from './utils';
+import {mapConstructor} from './common/injectors';
 
 /**
  * Shared directive definition logic.
@@ -10,8 +11,6 @@ function directive(config: ngRight.DirectiveConfig) {
 
     return function(constructor: ngRight.ControllerClass) {
 
-        var module        = utils.getModule();
-        var directiveName = utils.camelCase(config.selector);
 
         /**
          * Transfer properties.
@@ -38,9 +37,6 @@ function directive(config: ngRight.DirectiveConfig) {
             config.templateUrl = constructor.templateUrl;
         }
 
-        var fromInjectClassDecor = constructor.$inject || [];
-        var inject               = (constructor.prototype[utils.autoinjectKey] || []).concat(fromInjectClassDecor);
-        var injectStatic         = constructor[utils.autoinjectKey] || [];
 
         if (constructor.template)
             config.template = constructor.template;
@@ -52,24 +48,12 @@ function directive(config: ngRight.DirectiveConfig) {
         if (config.template == null && config.templateUrl === undefined && !config.scope)
             config.templateUrl = utils.options.makeTemplateUrl(config.selector);
 
-
-        // Directive function that assigns the injected services to the constructor.
-        definition.$inject = inject.concat(injectStatic);
-        function definition(...injected) {
-            var map = utils.zipObject(definition.$inject, injected);
-            // Assign injected values to the prototype.
-            inject.forEach(token => {
-                constructor.prototype[token] = map[token];
-            });
-            // Assign injected values to the class.
-            injectStatic.forEach(token => {
-                constructor[token] = map[token];
-            });
-            return config;
-        }
+        var module        = utils.getModule();
+        var directiveName = utils.camelCase(config.selector);
+        let definition    = mapConstructor(<Function>constructor, config);
 
         // Register the directive.
-        module.directive(directiveName, definition);
+        module.directive(directiveName, <any[]>definition);
     };
 }
 
@@ -121,7 +105,7 @@ export function View(config: ngRight.ControllerClass) {
     return function(constructor: ngRight.ControllerClass) {
 
         if (typeof config.template === 'string') {
-            constructor.template = transcludeContent(config.template);
+            constructor.template = transcludeContent(<string>config.template);
             if (/ng-transclude/i.test(<string>config.template))
                 constructor.transclude = true;
         }
@@ -135,7 +119,7 @@ export function View(config: ngRight.ControllerClass) {
 
 // If template contains the new <content> tag then add ng-transclude to it.
 // This will be picked up in @Component, where ddo.transclude will be set to true.
-function transcludeContent(template) {
+function transcludeContent(template: string) {
     var s = (template || '').match(/\<content[ >]([^\>]+)/i);
     if (s) {
         if (s[1].toLowerCase().indexOf('ng-transclude') === -1)

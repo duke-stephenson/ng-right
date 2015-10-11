@@ -2,6 +2,7 @@
 
 
 import * as utils from './utils';
+import {mapConstructor} from './common/injectors';
 
 
 function service(conf: ngRight.ServiceConfig|string, type?: string) {
@@ -19,27 +20,11 @@ function service(conf: ngRight.ServiceConfig|string, type?: string) {
 
     return function(constructor: Function) {
 
-        var module = utils.getModule();
-
-        var inject = constructor.prototype[utils.autoinjectKey] || [];
-        var injectStatic = constructor[utils.autoinjectKey] || [];
-
-        // Injector function that assigns the injected services to the class.
-        injector.$inject = inject.concat(injectStatic);
-        function injector(...injected) {
-            var map = utils.zipObject(injector.$inject, injected);
-            // Assign injected values to the prototype.
-            inject.forEach(token => {
-                constructor.prototype[token] = map[token];
-            });
-            // Assign injected values to the class.
-            injectStatic.forEach(token => {
-                constructor[token] = map[token];
-            });
-        }
+        var module   = utils.getModule();
+        let injector = mapConstructor(constructor);
 
         // Run DI.
-        module.run(injector);
+        module.run(<any[]>injector);
 
         // Publish service and/or controller.
         if (type === 'controller') {
@@ -60,7 +45,7 @@ function service(conf: ngRight.ServiceConfig|string, type?: string) {
                 }
 
                 // This is the Angular 1 filter itself
-                return (input, ...params) => {
+                return (input: any, ...params: any[]) => {
                     // Pass the input to the pipe to see if it conforms to the pipe's type
                     // spec
                     if ((<any>constructor).supports && !(<any>constructor).supports(input)) {
