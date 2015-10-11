@@ -36,7 +36,8 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-conventional-changelog": "^0.7.0",
     "gulp-typescript": "^2.9.2",
-    "matchdep": "^0.3.0"
+    "matchdep": "^0.3.0",
+    "merge2": "^0.3.6"
   },
   "typings": "ng-right.d.ts",
   "typescript": {
