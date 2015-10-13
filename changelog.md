@@ -1,3 +1,13 @@
+<a name="0.2.22"></a>
+## [0.2.22](https://github.com/j-walker23/ng-right/compare/0.2.21...v0.2.22) (2015-10-13)
+
+
+### Features
+
+* **0.2.22:** ci skip ([96b0bfe](https://github.com/j-walker23/ng-right/commit/96b0bfe))
+
+
+
 <a name="0.2.21"></a>
 ## [0.2.21](https://github.com/j-walker23/ng-right/compare/0.2.20...v0.2.21) (2015-10-13)
 
