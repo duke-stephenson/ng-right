@@ -2,7 +2,6 @@
 
 
 import * as utils from './utils';
-import {mapConstructor} from './common/injectors';
 
 /**
  * Shared directive definition logic.
@@ -50,7 +49,7 @@ function directive(config: ngRight.DirectiveConfig) {
 
         var module        = utils.getModule();
         var directiveName = utils.camelCase(config.selector);
-        let definition    = mapConstructor(<Function>constructor, config);
+        let definition    = utils.mapConstructor(<Function>constructor, config);
 
         // Register the directive.
         module.directive(directiveName, <any[]>definition);

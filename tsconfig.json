@@ -27,9 +27,9 @@
   "files": [
     "ts/bindings.ts",
     "ts/bootstrap.ts",
-    "ts/common/injectors.ts",
     "ts/directives.ts",
     "ts/index.ts",
+    "ts/libs.d.ts",
     "ts/services.ts",
     "ts/state.ts",
     "ts/utils.ts",

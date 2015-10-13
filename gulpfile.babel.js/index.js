@@ -8,9 +8,13 @@ import gulp from 'gulp';
 import changeLog from 'gulp-conventional-changelog';
 import ts from 'gulp-typescript';
 import dts from 'dts-bundle';
-import del from 'del';
+import del from 'promised-del';
 import merge from 'merge2';
+import dtsGen from 'dts-generator';
 
+let project = ts.createProject('tsconfig.json', {
+  noExternalResolve: true
+});
 
 gulp.task('changelog', () => {
   return gulp.src('changelog.md')
@@ -20,42 +24,30 @@ gulp.task('changelog', () => {
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('rm', done => {
-  return del('lib', done);
+gulp.task('rm', () => {
+  return del('lib');
 });
 
-let project = ts.createProject('tsconfig.json', {
-  noExternalResolve: true,
-  failOnTypeErrors: true,
-  declaration: true
-});
 
 gulp.task('ts', () => {
-
-  let result = project.src({base: './ts'})
-    .pipe(ts(project));
-
-  return merge([
-    result.js.pipe(gulp.dest('lib')),
-    result.dts.pipe(gulp.dest('lib'))
-  ]);
+  return project.src({base: './ts'})
+    .pipe(ts(project))
+    .pipe(gulp.dest('lib'));
 });
 
-
-gulp.task('dts', (done) => {
-
-  dts.bundle({
-    //externals: true,
+gulp.task('dts-gen', done => {
+  dtsGen.generate({
     name: 'ng-right',
-    main: 'lib/ts/index.d.ts',
-    out: 'index.d.ts'
+    baseDir: './ts',
+    main: 'ng-right/index',
+    files: ['./index.ts', './libs.d.ts', '../typings/tsd.d.ts'],
+    out: 'lib/ts/index.d.ts'
   });
-  return done();
-
+  done();
 });
 
 gulp.task('run', () => {
   gulp.watch('ts/**/*.ts', gulp.series('ts'));
 });
 
-gulp.task('default', gulp.series('rm', 'ts', 'dts'));
+gulp.task('default', gulp.series('rm', 'ts', 'dts-gen'));

@@ -2,7 +2,6 @@
 
 
 import * as utils from './utils';
-import {mapConstructor} from './common/injectors';
 
 
 function service(conf: ngRight.ServiceConfig|string, type?: string) {
@@ -21,7 +20,7 @@ function service(conf: ngRight.ServiceConfig|string, type?: string) {
     return function(constructor: Function) {
 
         var module   = utils.getModule();
-        let injector = mapConstructor(constructor);
+        let injector = utils.mapConstructor(constructor);
 
         // Run DI.
         module.run(<any[]>injector);

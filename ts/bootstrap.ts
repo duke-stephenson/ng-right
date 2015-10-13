@@ -8,11 +8,11 @@ import * as utils from './utils';
 
 let isSet = false;
 
-function bootstrap(options: ngRight.OptionsConfig) {
 
-    return function(target: ngRight.StateClass) {
+export function Bootstrap(options: ngRight.OptionsConfig): ClassDecorator {
+    return function(constructor: Function) {
 
-        utils.setOptions(options);
+        angular.extend(utils.options, options);
 
         if (isSet)
             return;
@@ -29,10 +29,5 @@ function bootstrap(options: ngRight.OptionsConfig) {
         }
 
     };
-}
-
-
-export function Bootstrap(options: ngRight.OptionsConfig) {
-    return bootstrap(options);
 }
 

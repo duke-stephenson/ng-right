@@ -6,5 +6,5 @@
 ## Folders
 .idea/
 .tscache/
-lib/
 node_modules/
+lib/
