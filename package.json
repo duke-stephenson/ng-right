@@ -1,6 +1,6 @@
 {
   "name": "ng-right",
-  "version": "0.2.19",
+  "version": "0.2.20",
   "description": "Angular 2 component syntax for Angular 1 apps",
   "author": "John Walker",
   "license": "MIT",
@@ -44,6 +44,7 @@
     },
     "dependencies": {
       "angular": "github:angular/bower-angular@1.4.6"
-    }
+    },
+    "main": "index.js"
   }
 }
