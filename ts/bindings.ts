@@ -5,9 +5,6 @@
 'use strict';
 
 
-///ts:ref=refs
-/// No file or directory matched name "refs" ///ts:ref:generated
-
 import * as utils from './utils';
 
 /**
@@ -56,6 +53,14 @@ export function bindString(targetOrKey: any|string, keyOrNothing?: string) {
     }
     return bindStringBase.apply(null, arguments);
 }
+
+//export function bindString(options: ngRight.BindTwoWayOptions): PropertyDecorator {
+//    return bindStringBase('');
+//}
+//
+//export function bindString(target: Object, key: string): PropertyDecorator {
+//    return bindStringBase(key);
+//}
 
 /**
  * Semantic version of @bind('@').
@@ -192,8 +197,6 @@ function bindOneWayBase(key: string = '') {
 /**
  * Generates a descriptor string suffix from the given options.
  */
-function encodeDescriptor(options): string {
+function encodeDescriptor(options: ngRight.BindTwoWayOptions): string {
     return (options.collection ? '*' : '') + (options.optional ? '?' : '') + (options.key || '');
 }
-
-

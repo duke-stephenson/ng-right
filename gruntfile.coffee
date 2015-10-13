@@ -31,12 +31,6 @@ module.exports = (grunt) ->
         src: 'typings/ng-right/ng-right.d.ts'
         dest: 'lib/ng-right.d.ts'
 
-    webpack:
-      dist:
-        entry: './lib/index.js'
-        output:
-          filename: 'dist/ng-right.js'
-
     ts:
       build:
         reference: '<%= types.ref %>'

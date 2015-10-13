@@ -1,3 +1,32 @@
+<a name="0.2.19"></a>
+## [0.2.19](https://github.com/j-walker23/ng-right/compare/0.2.17...v0.2.19) (2015-10-13)
+
+
+### Features
+
+* **0.2.18:** local ([32fdcc4](https://github.com/j-walker23/ng-right/commit/32fdcc4))
+* **0.2.19:** local ([4bd9c41](https://github.com/j-walker23/ng-right/commit/4bd9c41))
+* **build:** implement gulp and clean ts compile warnings ([4d966bd](https://github.com/j-walker23/ng-right/commit/4d966bd))
+* **build:** implement gulp and clean ts compile warnings ([31cd888](https://github.com/j-walker23/ng-right/commit/31cd888))
+* **dts:** finish auto defintion build ([5fb8bea](https://github.com/j-walker23/ng-right/commit/5fb8bea))
+* **gulp:** gulp watch and fix type errors ([c945bf1](https://github.com/j-walker23/ng-right/commit/c945bf1))
+
+
+
+<a name="0.2.18"></a>
+## [0.2.18](https://github.com/j-walker23/ng-right/compare/0.2.17...v0.2.18) (2015-10-13)
+
+
+### Features
+
+* **0.2.18:** local ([32fdcc4](https://github.com/j-walker23/ng-right/commit/32fdcc4))
+* **build:** implement gulp and clean ts compile warnings ([4d966bd](https://github.com/j-walker23/ng-right/commit/4d966bd))
+* **build:** implement gulp and clean ts compile warnings ([31cd888](https://github.com/j-walker23/ng-right/commit/31cd888))
+* **dts:** finish auto defintion build ([5fb8bea](https://github.com/j-walker23/ng-right/commit/5fb8bea))
+* **gulp:** gulp watch and fix type errors ([c945bf1](https://github.com/j-walker23/ng-right/commit/c945bf1))
+
+
+
 <a name="0.2.17"></a>
 ## [0.2.17](https://github.com/j-walker23/ng-right/compare/0.2.16...v0.2.17) (2015-10-06)
 
