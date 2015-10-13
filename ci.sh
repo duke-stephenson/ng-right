@@ -25,6 +25,12 @@ cmd_release () {
     git hf build npm -t "$type" -s "$script" -m "$msg"
 }
 
+cmd_local () {
+  cmd_before_deploy
+  cmd_release "ci skip"
+  npm publish
+}
+
 cmd="${1:-release}"
 echo "Run cmd $cmd"
 
@@ -40,6 +46,10 @@ case "$cmd" in
 
     before_deploy)
         cmd_before_deploy
+        exit ;;
+
+    local)
+        cmd_local
         exit ;;
 
     run)
