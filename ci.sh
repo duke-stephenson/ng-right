@@ -4,7 +4,7 @@ set -e
 
 cmd_install () {
     npm install -g npm
-    npm install -g grunt grunt-cli
+    npm install -g "gulpjs/gulp-cli#4.0"
     npm install --save-dev
     npm install -g tsd
     tsd install
@@ -15,13 +15,13 @@ cmd_script () {
 }
 
 cmd_before_deploy () {
-    grunt
+    gulp
 }
 
 cmd_release () {
     msg=${1:-"release package"}
     type=${2:-"patch"}
-    script="grunt conventionalChangelog"
+    script="gulp changelog"
     git hf build npm -t "$type" -s "$script" -m "$msg"
 }
 
