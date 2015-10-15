@@ -1,6 +1,6 @@
 {
   "name": "ng-right",
-  "version": "0.2.22",
+  "version": "0.2.23",
   "description": "Angular 2 component syntax for Angular 1 apps",
   "author": "John Walker",
   "license": "MIT",
@@ -13,41 +13,60 @@
     "annotations",
     "decorators"
   ],
-  "format": "cjs",
-  "dependencies": {
-    "angular": "1.4.6"
+  "scripts": {
+    "test": "jest"
   },
-  "devDependencies": {
-    "babel-core": "^5.8.25",
-    "del": "^2.0.2",
-    "dts-bundle": "^0.3.0",
-    "grunt": "^0.4.5",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-copy": "^0.8.1",
-    "grunt-conventional-changelog": "^4.1.0",
-    "grunt-ts": "^5.0.0-beta.5",
-    "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-conventional-changelog": "^0.7.0",
-    "gulp-typescript": "^2.9.2",
-    "matchdep": "^0.3.0",
-    "merge2": "^0.3.6"
+  "files": [
+    "lib"
+  ],
+  "main": "index",
+  "jspm": {
+    "main": "index.js",
+    "registry": "github",
+    "directories": {
+      "lib": "lib"
+    },
+    "dependencies": {
+      "angular": "github:angular/bower-angular"
+    }
   },
   "typings": "index.d.ts",
   "typescript": {
     "definition": "index.d.ts"
   },
-  "files": [
-    "lib/ts"
-  ],
-  "main": "index",
-  "jspm": {
-    "registry": "github",
-    "directories": {
-      "lib": "lib/ts"
-    },
-    "dependencies": {
-      "angular": "github:angular/bower-angular@1.4.6"
-    },
-    "main": "index.js"
+  "dependencies": {
+    "angular": "*",
+    "reflect-metadata": "*"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.4.7",
+    "babel-core": "^5.8.25",
+    "chai": "^3.3.0",
+    "dts-generator": "^1.5.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-conventional-changelog": "^0.7.0",
+    "gulp-typescript": "^2.9.2",
+    "jest-cli": "^0.5.10",
+    "karma": "^0.13.11",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^0.2.0",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "merge2": "^0.3.6",
+    "mocha": "^2.3.3",
+    "phantomjs": "^1.9.18",
+    "promised-del": "^1.0.2",
+    "typemoq": "0.0.6",
+    "typescript": "^1.6.2"
+  },
+  "jest": {
+    "scriptPreprocessor": "./tools/preprocessor.js",
+    "testFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ]
   }
 }

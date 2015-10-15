@@ -1,5 +1,15 @@
 'use strict';
 
+/**
+ * Used to store autoinject settings (list of things to inject onto the class
+ * or the prototype).
+ */
+export var autoinjectKey = typeof Symbol === 'function' ? Symbol('autoinjectSettings') : randomString();
+
+/**
+ * Used to store binding information (isolated scope settings).
+ */
+export var scopeKey = typeof Symbol === 'function' ? Symbol('scopeSettings') : randomString();
 
 /**
  * Adds the given property to the list of items to autoinject onto the class
@@ -15,24 +25,12 @@ export function autoinject(target: any, propertyName: string): void {
  */
 export let options = {
     // Default angular module
-    module: <angular.IModule> null,
+    module: <angular.IModule>null,
     makeTemplateUrl(elementName: string): string {
         return `${elementName}/${elementName}.tpl.html`;
     },
-    controllerAs: <string> null
+    controllerAs: <string>null
 };
-
-/**
- * Used to store autoinject settings (list of things to inject onto the class
- * or the prototype).
- */
-export var autoinjectKey = typeof Symbol === 'function' ? Symbol('autoinjectSettings') : randomString();
-
-/**
- * Used to store binding information (isolated scope settings).
- */
-export var scopeKey = typeof Symbol === 'function' ? Symbol('scopeSettings') : randomString();
-
 
 
 /**
@@ -57,7 +55,7 @@ function normalise(name: string): string {
 
     for (var i = 0; i < name.length - 1; i++) {
         var prefix = name.slice(0, i + 1);
-        var next   = name[i + 1];
+        var next = name[i + 1];
 
         if (/[a-z]/.test(name[i]) && /[A-Z]/.test(next)) {
             next = next.toLowerCase();
@@ -80,14 +78,14 @@ export function kebabCase(name: string): string {
  */
 export function camelCase(name: string): string {
     name = normalise(name);
-    return name.replace(/ (.)/g, (m:any, p1: string) => p1.toUpperCase());
+    return name.replace(/ (.)/g, (m: any, p1: string) => p1.toUpperCase());
 }
 
 /**
  * Primitive version of lodash#zipObject.
  */
-export function zipObject<T>(one: string[], other: T[]): {[key: string]: T} {
-    var buffer: {[key: string]: T} = {};
+export function zipObject<T>(one: string[], other: T[]): { [key: string]: T } {
+    var buffer: { [key: string]: T } = {};
     one.forEach((key, index) => {
         buffer[key] = other[index];
     });
@@ -117,11 +115,11 @@ export function randomString(): string {
 /**
  * Assertion utility.
  */
-export function assert(ok: boolean|number, ...args: string[]): void {
+export function assert(ok: boolean | number, ...args: string[]): void {
     if (!ok) throw new Error(args.join(' '));
 }
 
-export function mapConstructor(constructor: Function, config?: any): Function|any[] {
+export function mapConstructor(constructor: Function, config?: any): Function | any[] {
 
     var inject: string[] = constructor.prototype[autoinjectKey] || [];
     var injectStatic: string[] = constructor[autoinjectKey] || [];
@@ -144,4 +142,3 @@ export function mapConstructor(constructor: Function, config?: any): Function|an
 
     return injector;
 }
-

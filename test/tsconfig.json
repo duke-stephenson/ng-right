@@ -1,0 +1,46 @@
+{
+  "version": "1.6.2",
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "isolatedModules": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "noImplicitAny": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "target": "es5",
+    "rootDir": ".",
+    "outDir": ".",
+    "inlineSources": true,
+    "sourceMap": true,
+    "inlineSourceMap": true
+  },
+  "filesGlob": [
+    "./**/*.ts",
+    "../src/**/*.ts",
+    "../typings/**/*.ts"
+  ],
+  "exclude": [],
+  "files": [
+    "utils.spec.ts",
+    "directives.spec.ts",
+    "../src/bindings.ts",
+    "../src/bootstrap.ts",
+    "../src/directives.ts",
+    "../src/index.ts",
+    "../src/libs.d.ts",
+    "../src/services.ts",
+    "../src/state.ts",
+    "../src/utils.ts",
+    "../typings/angular-ui-router/angular-ui-router.d.ts",
+    "../typings/angularjs/angular.d.ts",
+    "../typings/assertion-error/assertion-error.d.ts",
+    "../typings/chai/chai.d.ts",
+    "../typings/jquery/jquery.d.ts",
+    "../typings/mocha/mocha.d.ts",
+    "../typings/node/node.d.ts",
+    "../typings/tsd.d.ts"
+  ]
+}
