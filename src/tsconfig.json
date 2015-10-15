@@ -1,0 +1,38 @@
+{
+  "version": "1.6.2",
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "isolatedModules": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "noImplicitAny": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "target": "es5",
+    "rootDir": ".",
+    "outDir": "../lib",
+    "sourceMap": false,
+    "noEmit": true
+  },
+  "filesGlob": [
+    "./**/*.ts",
+    "../typings/**/*.ts"
+  ],
+  "files": [
+    "bindings.ts",
+    "bootstrap.ts",
+    "directives.ts",
+    "index.ts",
+    "libs.d.ts",
+    "services.ts",
+    "state.ts",
+    "utils.ts",
+    "../typings/angular-ui-router/angular-ui-router.d.ts",
+    "../typings/angularjs/angular.d.ts",
+    "../typings/jquery/jquery.d.ts",
+    "../node_modules/reflect-metadata/reflect-metadata.d.ts"
+  ],
+  "exclude": []
+}

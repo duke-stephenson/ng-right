@@ -8,43 +8,29 @@ declare var Symbol: Function;
 
 declare module ngRight {
 
-    //function Bootstrap(config: OptionsConfig): ClassDecorator;
-    //
-    //function Inject(...deps: string[]): ClassDecorator;
-    //
-    //function State(config: StateConfig): ClassDecorator;
-    //
-    //function Pipe(config: ServiceConfig): ClassDecorator;
-    //
-    //function Attribute(config: DirectiveConfig): ClassDecorator;
-    //
-    //function Component(config: DirectiveConfig): ClassDecorator;
-    //
-    //function View(config: ViewConfig): ClassDecorator;
-    //
-    //function Ambient(config: BaseConfig): ClassDecorator;
-    //function Ambient(target: Function): void;
-    //
-    //function Service(config: ServiceConfig|string): ClassDecorator;
-    //
-    //function Controller(config: ServiceConfig|string): ClassDecorator;
-    //
-    //function Factory(config: ServiceConfig|string): ClassDecorator;
+    // function Bootstrap(config: OptionsConfig): ClassDecorator;
+    // function Inject(...deps: string[]): ClassDecorator;
+    // function State(config: StateConfig): ClassDecorator;
+    // function Pipe(config: ServiceConfig): ClassDecorator;
+    // function Attribute(config: DirectiveConfig): ClassDecorator;
+    // function Component(config: DirectiveConfig): ClassDecorator;
+    // function View(config: ViewConfig): ClassDecorator;
+    // function Ambient(config: BaseConfig): ClassDecorator;
+    // function Ambient(target: Function): void;
+    // function Service(config: ServiceConfig|string): ClassDecorator;
+    // function Controller(config: ServiceConfig|string): ClassDecorator;
+    // function Factory(config: ServiceConfig|string): ClassDecorator;
 
     // Property decorators.
-    //function autoinject(target: any, key: string): void;
-    //
-    //function bindTwoWay(options: BindTwoWayOptions): PropertyDecorator;
-    //function bindTwoWay(target: any, key: string): void;
-    //
-    //function bindOneWay(key: string): PropertyDecorator;
-    //function bindOneWay(target: any, key: string): void;
-    //
-    //function bindString(key: string): PropertyDecorator;
-    //function bindString(target: any, key: string): void;
-    //
-    //function bindExpression(key: string): PropertyDecorator;
-    //function bindExpression(target: any, key: string): void;
+    // function autoinject(target: any, key: string): void;
+    // function bindTwoWay(options: BindTwoWayOptions): PropertyDecorator;
+    // function bindTwoWay(target: any, key: string): void;
+    // function bindOneWay(key: string): PropertyDecorator;
+    // function bindOneWay(target: any, key: string): void;
+    // function bindString(key: string): PropertyDecorator;
+    // function bindString(target: any, key: string): void;
+    // function bindExpression(key: string): PropertyDecorator;
+    // function bindExpression(target: any, key: string): void;
 
 
     // Abstract interface shared by configuration objects.

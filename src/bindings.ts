@@ -54,13 +54,13 @@ export function bindString(targetOrKey: any|string, keyOrNothing?: string) {
     return bindStringBase.apply(null, arguments);
 }
 
-//export function bindString(options: ngRight.BindTwoWayOptions): PropertyDecorator {
+// export function bindString(options: ngRight.BindTwoWayOptions): PropertyDecorator {
 //    return bindStringBase('');
-//}
+// }
 //
-//export function bindString(target: Object, key: string): PropertyDecorator {
+// export function bindString(target: Object, key: string): PropertyDecorator {
 //    return bindStringBase(key);
-//}
+// }
 
 /**
  * Semantic version of @bind('@').
