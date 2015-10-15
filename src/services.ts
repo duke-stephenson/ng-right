@@ -53,8 +53,8 @@ function service(conf: ngRight.ServiceConfig|string, type?: string) {
 
                     // Pass all inputs and parameters to the filter returning the output
                     return (<any>constructor).transform(input, ...params);
-                }
-            })
+                };
+            });
         }
     };
 }
@@ -98,7 +98,7 @@ export function Service(config: ngRight.ServiceConfig) {
  * module.controller under the given name. Can also optionally be published as
  * a service.
  */
-export function Controller(config: ngRight.ServiceConfig) {
+export function Controller(config: ngRight.ServiceName) {
     return service(config, 'controller');
 }
 

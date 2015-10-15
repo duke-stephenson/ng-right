@@ -1,6 +1,6 @@
 {
   "name": "ng-right",
-  "version": "0.2.23",
+  "version": "0.2.24",
   "description": "Angular 2 component syntax for Angular 1 apps",
   "author": "John Walker",
   "license": "MIT",
@@ -14,7 +14,7 @@
     "decorators"
   ],
   "scripts": {
-    "test": "jest"
+    "test": "gulp test:ts"
   },
   "files": [
     "lib"
@@ -46,27 +46,9 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-conventional-changelog": "^0.7.0",
     "gulp-typescript": "^2.9.2",
-    "jest-cli": "^0.5.10",
-    "karma": "^0.13.11",
-    "karma-chai": "^0.1.0",
-    "karma-mocha": "^0.2.0",
-    "karma-phantomjs-launcher": "^0.2.1",
     "merge2": "^0.3.6",
     "mocha": "^2.3.3",
-    "phantomjs": "^1.9.18",
     "promised-del": "^1.0.2",
-    "typemoq": "0.0.6",
     "typescript": "^1.6.2"
-  },
-  "jest": {
-    "scriptPreprocessor": "./tools/preprocessor.js",
-    "testFileExtensions": [
-      "ts",
-      "js"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ]
   }
 }
