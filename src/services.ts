@@ -4,7 +4,7 @@
 import * as utils from './utils';
 
 
-function service(conf: ngRight.ServiceConfig|string, type?: string) {
+function service(conf: ngRight.ServiceName, type?: string) {
 
     let config: ngRight.ServiceConfig;
     if (typeof conf === 'string') {
@@ -79,17 +79,17 @@ export function Ambient(configOrClass: any) {
  * into the angular DI environment.
  */
 function AmbientBase(config: ngRight.BaseConfig) {
-    return service(<ngRight.ServiceConfig>config);
+    return service(<ngRight.ServiceName>config);
 }
 
-export function Factory(config: ngRight.ServiceConfig) {
+export function Factory(config: ngRight.ServiceName) {
     return service(config, 'factory');
 }
 
 /**
  * Defines a generic angular service.
  */
-export function Service(config: ngRight.ServiceConfig) {
+export function Service(config: ngRight.ServiceName) {
     return service(config, 'service');
 }
 
@@ -102,6 +102,6 @@ export function Controller(config: ngRight.ServiceName) {
     return service(config, 'controller');
 }
 
-export function Pipe(config: ngRight.ServiceConfig) {
+export function Pipe(config: ngRight.ServiceName) {
     return service(config, 'filter');
 }
