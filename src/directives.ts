@@ -53,7 +53,7 @@ function directive(config: ngRight.DirectiveConfig) {
 /**
  * Defines an angular component (custom element).
  */
-export function Component(config: ngRight.DirectiveConfig) {
+export function Component(config: ngRight.DirectiveConfig): ClassDecorator {
     utils.assert(config != null && typeof config === 'object', `expected a configuration object, got: ${config}`);
     utils.assert(!!config.selector, 'you must provide a selector');
 
@@ -75,7 +75,7 @@ export function Component(config: ngRight.DirectiveConfig) {
 /**
  * Defines an attribute directive.
  */
-export function Attribute(config: ngRight.DirectiveConfig) {
+export function Attribute(config: ngRight.DirectiveConfig): ClassDecorator {
     utils.assert(config != null && typeof config === 'object', `expected a configuration object, got: ${config}`);
     utils.assert(!!config.selector, 'you must provide a selector');
 
@@ -90,12 +90,12 @@ export function Attribute(config: ngRight.DirectiveConfig) {
     return directive(directiveConfig);
 }
 
-export function View(config: ngRight.ViewConfig) {
+export function View(config: ngRight.ViewConfig): ClassDecorator {
     utils.assert(config != null && typeof config === 'object', `expected a configuration object, got: ${config}`);
     var tpl = config.template || config.templateUrl;
     utils.assert(!!tpl, 'Define a template retard');
 
-    return function(constructor: ngRight.ControllerClass) {
+    return <ClassDecorator>function(constructor: ngRight.ControllerClass) {
 
         if (config.templateUrl) {
             constructor.templateUrl = config.templateUrl;
