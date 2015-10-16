@@ -1,6 +1,6 @@
 {
   "name": "ng-right",
-  "version": "0.2.26",
+  "version": "0.2.27",
   "description": "Angular 2 component syntax for Angular 1 apps",
   "author": "John Walker",
   "license": "MIT",
@@ -22,6 +22,7 @@
   "main": "index",
   "jspm": {
     "main": "index.js",
+    "format": "cjs",
     "registry": "github",
     "directories": {
       "lib": "lib"
