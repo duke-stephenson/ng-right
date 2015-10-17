@@ -1,6 +1,6 @@
 {
   "name": "ng-right",
-  "version": "0.2.29",
+  "version": "0.2.30",
   "description": "Angular 2 component syntax for Angular 1 apps",
   "author": "John Walker",
   "license": "MIT",
@@ -37,16 +37,15 @@
     "promised-del": "^1.0.2",
     "typescript": "^1.6.2"
   },
-  "main": "index.ts",
+  "main": "index",
   "jspm": {
-    "main": "index.ts",
+    "main": "index",
     "registry": "jspm",
     "directories": {
-      "lib": "src"
+      "lib": "lib"
     },
     "dependencies": {
-      "angular": "github:angular/bower-angular@*",
-      "reflect-metadata": "npm:reflect-metadata@*"
+      "angular": "github:angular/bower-angular@*"
     }
   }
 }

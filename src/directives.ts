@@ -1,7 +1,5 @@
 'use strict';
 
-import 'reflect-metadata';
-
 import * as utils from './utils';
 
 /**
