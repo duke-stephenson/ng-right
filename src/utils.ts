@@ -4,12 +4,14 @@
  * Used to store autoinject settings (list of things to inject onto the class
  * or the prototype).
  */
-export var autoinjectKey = typeof Symbol === 'function' ? Symbol('autoinjectSettings') : randomString();
+export var autoinjectKey = Symbol('autoinjectSettings');
 
 /**
  * Used to store binding information (isolated scope settings).
  */
-export var scopeKey = typeof Symbol === 'function' ? Symbol('scopeSettings') : randomString();
+export var scopeKey = Symbol('scopeSettings');
+//export var autoinjectKey = typeof Symbol === 'function' ? Symbol('autoinjectSettings') : randomString();
+//export var scopeKey = typeof Symbol === 'function' ? Symbol('scopeSettings') : randomString();
 
 /**
  * Adds the given property to the list of items to autoinject onto the class

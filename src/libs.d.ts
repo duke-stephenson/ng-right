@@ -3,7 +3,7 @@
  * @version 10/12/15 5:28 AM
  */
 
-declare var Symbol: Function;
+//declare var Symbol: Function;
 
 
 declare module ngRight {
