@@ -1,6 +1,6 @@
 {
   "name": "ng-right",
-  "version": "0.2.32",
+  "version": "0.2.33",
   "description": "Angular 2 component syntax for Angular 1 apps",
   "author": "John Walker",
   "license": "MIT",
@@ -13,16 +13,6 @@
     "annotations",
     "decorators"
   ],
-  "scripts": {
-    "test": "gulp test:ts"
-  },
-  "typings": "index.d.ts",
-  "typescript": {
-    "definition": "index.d.ts"
-  },
-  "dependencies": {
-    "angular": "*"
-  },
   "devDependencies": {
     "angular-mocks": "^1.4.7",
     "babel-core": "^5.8.25",
@@ -36,15 +26,20 @@
     "promised-del": "^1.0.2",
     "typescript": "^1.6.2"
   },
+  "scripts": {
+    "test": "gulp test:ts"
+  },
+  "typings": "index.d.ts",
+  "typescript": {
+    "definition": "index.d.ts"
+  },
+  "format": "cjs",
   "main": "index",
-  "jspm": {
-    "main": "index",
-    "registry": "jspm",
-    "directories": {
-      "lib": "lib"
-    },
-    "dependencies": {
-      "angular": "github:angular/bower-angular@*"
-    }
+  "registry": "jspm",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "angular": "github:angular/bower-angular@*"
   }
 }
