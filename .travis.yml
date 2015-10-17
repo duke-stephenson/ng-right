@@ -1,28 +1,28 @@
-
-language: node_js
-
-node_js:
-- 4.1.1
-
-cache:
-  directories:
-  - node_modules
-  - typings
-
-branches:
-  only:
-  - master
-
-install: "./ci.sh install"
-script: "./ci.sh script"
-before_deploy: "./ci.sh before_deploy"
-
-deploy:
-  provider: npm
-  email: john.walker.dev@gmail.com
-  api_key:
-    secure: iAtAz5GI5xLKhfPO6m/9iytFZXxbt2wD5vPwtCTuy6simOZiZ8UTjy0e0wd/v1A6WNLJwokO5+QLDNA8tBzT7NpMLfdHTql4+ili9uygKr2TeFkB2tmeU85GxZrANhxtZ7X1CZ7ft95+I/X3qGePFjfOT9ONXV31d/zOQ+uJD3h/TL6PmneTmGkA4RSBpAy+1bJA1DDPyAS7mvtjdoutF/B4VkaAtpgVxX6xIaZ13x4ciISykSpUEkYpBrPquXZad6vVXw/ZHWngXfzwDjted0htnIyc4WrL9S4OdLS/6Cf1lEzNmkRkZjxICGaXlOr/442Mdn3lrD0HqgKhZ9MxLgE/qxFZBEoxazMQ0BUt0jeW2Utu7HXLx+7v9VTzXFXlIK68mWkxxl5QfM/0Wul3Reag3BNQk3RW8oZwKnA4lHdID8mF3gtCWD1xhSUMrKB0Hvmb8oMWYu7M6u8K8jHowrNt6ytZR719xt6e501N/sn4dG4nOTrIqTKDFQkx6gKlLzMScFid5mLKjzqNTAFEMAI164Xc38FVGxoWO1lOFbk0P9oVK+MSmIDv07nXKDBM05aXo58fOQtif9vA7Bv03m8gRbgzMliYExAByY7CyBwzLltugnBSZBYeEQFcSd3FRZy2TzEc86q/AVPl21XGNi9c3OgNQ5UuCP0tnFusZxw=
-  skip_cleanup: true
-  on:
-    repo: j-walker23/ng-right
-    branch: master
+#
+#language: node_js
+#
+#node_js:
+#- 4.1.1
+#
+#cache:
+#  directories:
+#  - node_modules
+#  - typings
+#
+#branches:
+#  only:
+#  - master
+#
+#install: "./ci.sh install"
+#script: "./ci.sh script"
+#before_deploy: "./ci.sh before_deploy"
+#
+#deploy:
+#  provider: npm
+#  email: john.walker.dev@gmail.com
+#  api_key:
+#    secure: iAtAz5GI5xLKhfPO6m/9iytFZXxbt2wD5vPwtCTuy6simOZiZ8UTjy0e0wd/v1A6WNLJwokO5+QLDNA8tBzT7NpMLfdHTql4+ili9uygKr2TeFkB2tmeU85GxZrANhxtZ7X1CZ7ft95+I/X3qGePFjfOT9ONXV31d/zOQ+uJD3h/TL6PmneTmGkA4RSBpAy+1bJA1DDPyAS7mvtjdoutF/B4VkaAtpgVxX6xIaZ13x4ciISykSpUEkYpBrPquXZad6vVXw/ZHWngXfzwDjted0htnIyc4WrL9S4OdLS/6Cf1lEzNmkRkZjxICGaXlOr/442Mdn3lrD0HqgKhZ9MxLgE/qxFZBEoxazMQ0BUt0jeW2Utu7HXLx+7v9VTzXFXlIK68mWkxxl5QfM/0Wul3Reag3BNQk3RW8oZwKnA4lHdID8mF3gtCWD1xhSUMrKB0Hvmb8oMWYu7M6u8K8jHowrNt6ytZR719xt6e501N/sn4dG4nOTrIqTKDFQkx6gKlLzMScFid5mLKjzqNTAFEMAI164Xc38FVGxoWO1lOFbk0P9oVK+MSmIDv07nXKDBM05aXo58fOQtif9vA7Bv03m8gRbgzMliYExAByY7CyBwzLltugnBSZBYeEQFcSd3FRZy2TzEc86q/AVPl21XGNi9c3OgNQ5UuCP0tnFusZxw=
+#  skip_cleanup: true
+#  on:
+#    repo: j-walker23/ng-right
+#    branch: master
