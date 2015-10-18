@@ -596,8 +596,7 @@ class X {
 ```typescript
 import {State, autoinject} from 'ng-right';
 
-@State({
-  name: 'name-of-state',
+@State('name-of-state', {
   templateUrl: 'something.tpl.html'
 })
 class StateController {
@@ -626,6 +625,25 @@ import {Component, View, autoinject} from 'ng-right';
   templateUrl: 'path-to-template.tpl.html' // template or templateUrl
 })
 class appHead {
+
+  @autoinject $q;
+
+  constructor() {
+    console.log(this.$q);
+  }
+}
+```
+
+```typescript
+import {State, View, autoinject} from 'ng-right';
+
+@State('name-of-state', {
+  url: '/ui-state-url/:id?param&pparam'
+})
+@View({
+  template: '<dad-dick>80s</dad-dick>'
+})
+class StateController {
 
   @autoinject $q;
 
