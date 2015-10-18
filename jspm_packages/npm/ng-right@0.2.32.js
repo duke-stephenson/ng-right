@@ -1,1 +1,0 @@
-module.exports = require("npm:ng-right@0.2.32/index");
