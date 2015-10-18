@@ -9,19 +9,25 @@ import IUrlRouterProvider = angular.ui.IUrlRouterProvider;
 import IStateProvider = angular.ui.IStateProvider;
 
 
-export function State(config: ngRight.StateConfig): ClassDecorator {
-    utils.assert(!!config, '@State: Valid options are: name, url, defaultRoute, template, resolve, abstract.');
-    return function(constructor: ngRight.StateClass) {
+export function State(stateName: string, config: ngRight.StateConfig): ClassDecorator {
 
-        let injector        = utils.mapConstructor(<Function>constructor);
-        let defaultRoute    = config.defaultRoute;
+    utils.assert(!!config, '@State: Valid options are: url, defaultRoute, template, templateUrl, resolve, abstract');
+
+    return function(target: ngRight.StateClass) {
+
+        if (config.as)
+            utils.options.controllerAs = utils.camelCase(target.prototype.constructor.name);
+
+        let injector        = utils.mapConstructor(<Function>target);
         let module          = utils.getModule();
-        let name            = utils.camelCase(config.name);
-        config.template     = config.template || constructor.template;
-        config.templateUrl  = config.templateUrl || constructor.templateUrl;
-        config.controller   = <Function>constructor;
+        let name            = utils.camelCase(stateName); // used for the controllerAs syntax
+        let defaultRoute    = config.defaultRoute;
+        config.template     = config.template || target.template;
+        config.templateUrl  = config.templateUrl || target.templateUrl;
+        config.controller   = <Function>target;
         config.controllerAs = config.controllerAs || utils.options.controllerAs || name;
-        if (!config.resolve) {} else constructor.$inject = Object.keys(config.resolve);
+        config.name         = stateName; // for the $stateProvider.state below
+        if (!config.resolve) {} else target.$inject = Object.keys(config.resolve);
 
         setup.$inject = ['$urlRouterProvider', '$stateProvider'];
         function setup($urlRouterProvider: IUrlRouterProvider, $stateProvider: IStateProvider) {

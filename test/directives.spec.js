@@ -17,7 +17,7 @@ var directives_1 = require('../lib/directives');
  * @author john
  * @version 10/15/15 12:41 PM
  */
-describe('utils', function () {
+describe('directives', function () {
     it('adds propertyName onto target prototype', function () {
         var TestClass = (function () {
             function TestClass() {
