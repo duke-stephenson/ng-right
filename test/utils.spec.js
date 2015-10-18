@@ -14,7 +14,7 @@ var should = chai.should();
 //noinspection TypeScriptCheckImport
 var utils_1 = require('../lib/utils');
 describe('utils', function () {
-    it('adds propertyName onto target prototype', function () {
+    it.only('adds propertyName onto target prototype', function () {
         var UtilsClass = (function () {
             function UtilsClass() {
             }
@@ -28,5 +28,6 @@ describe('utils', function () {
         var injectedVars = UtilsClass.prototype[key];
         injectedVars.should.have.length(1);
         injectedVars[0].should.equal('value');
+        console.log('NAMMME', utils_1.camelCase('UtilsClass'));
     });
 });

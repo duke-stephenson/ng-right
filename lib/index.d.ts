@@ -130,7 +130,7 @@ declare module 'ng-right/services' {
 
 }
 declare module 'ng-right/state' {
-	export function State(config: ngRight.StateConfig): ClassDecorator;
+	export function State(stateName: string, config: ngRight.StateConfig): ClassDecorator;
 
 }
 declare module 'ng-right/bootstrap' {
@@ -189,6 +189,7 @@ declare module ngRight {
 
     interface StateConfig extends angular.ui.IState {
         defaultRoute?: boolean|string;
+        as?: boolean; // use class name
     }
 
     interface StateClass extends Function {

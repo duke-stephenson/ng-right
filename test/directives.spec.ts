@@ -10,7 +10,7 @@ import {View, Component} from '../lib/directives';
  */
 
 
-describe('utils', () => {
+describe('directives', () => {
 
     it('adds propertyName onto target prototype', () => {
 

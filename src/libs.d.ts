@@ -41,6 +41,7 @@ declare module ngRight {
 
     interface StateConfig extends angular.ui.IState {
         defaultRoute?: boolean|string;
+        as?: boolean; // use class name
     }
 
     interface StateClass extends Function {

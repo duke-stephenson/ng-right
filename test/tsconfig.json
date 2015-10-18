@@ -26,6 +26,7 @@
   "files": [
     "utils.spec.ts",
     "directives.spec.ts",
+    "state.spec.ts",
     "../src/bindings.ts",
     "../src/bootstrap.ts",
     "../src/directives.ts",
